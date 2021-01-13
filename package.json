@@ -1,0 +1,22 @@
+{
+  "name": "this-cunningham-service",
+  "version": "1.0.0",
+  "description": "Trip advisor service app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slack-Reactor/this-Cunningham-service.git"
+  },
+  "author": "Chris Cunningha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Slack-Reactor/this-Cunningham-service/issues"
+  },
+  "homepage": "https://github.com/Slack-Reactor/this-Cunningham-service#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
