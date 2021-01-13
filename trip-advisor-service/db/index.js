@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost/tripAdvisor')
 const showcaseSchema = new mongoose.Schema({
   attractionTitle: String,
   country: String,
-  relativeRanking: [Number, Number]
+  relativeRanking: [Number, Number],
   reviews: Number,
   overview: {
     description: String,
