@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const seedData = require('./seed.js');
 
 mongoose.connect('mongodb://localhost/tripAdvisor', {
   useNewUrlParser: true, useUnifiedTopology: true,
@@ -30,12 +29,4 @@ const showcaseSchema = new mongoose.Schema({
 
 const ShowCase = mongoose.model('Showcase', showcaseSchema);
 
-ShowCase.find()
-  .then((result) => {
-    if (result.length === 0) {
-      ShowCase.create(seedData);
-    } else {
-      console.log('db already seeded');
-    }
-  })
-  .catch((err) => console.log('error finding db', err));
+module.exports.ShowCase = ShowCase;
