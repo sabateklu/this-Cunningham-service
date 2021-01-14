@@ -29,6 +29,19 @@ const attractionTitles = [
   'Floating Markets',
   'Phuphrabat Historical Park',
   'Phra That Phanom',
+];
+
+const attractionTypes = [
+  'National Park',
+  'Sacred & Religious Sites',
+  'Beaches',
+  'Points of interest & Landmarks',
+  'Monuments & Statues',
+  'Historic Sites',
+  'Architectural Buildings',
+  'Mysterious Sites',
+  'Ancient Ruins',
+  'Scenic Walking Areas'
 ]
 
 const descriptions = [
@@ -78,7 +91,8 @@ class Attraction {
   constructor(id) {
     this.attractionTitle = randomGenerator(null, attractionTitles);
     this.city = randomGenerator(null, cities);
-    this.relativeRanking = [randomGenerator(0, 17), randomGenerator(17, 100)]
+    this.relativeRanking = [randomGenerator(0, 17), randomGenerator(17, 100)];
+    this.attractionType = randomGenerator(null, attractionTypes)
     this.reviews = randomGenerator(0, 3000)
     this.overview = {
       description: randomGenerator(null, descriptions),
@@ -101,4 +115,4 @@ for (let i = 0; i < 100; i++) {
   attractions.push(newAttraction);
 }
 
-console.log(attractions)
+module.exports = attractions;
