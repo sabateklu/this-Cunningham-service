@@ -24,4 +24,4 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   mode: 'development',
-}
+};
