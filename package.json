@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "cd trip-advisor-service && node db/index.js && cd ..",
     "start": "cd trip-advisor-service && npx nodemon server",
-    "build": "npx webpack --config webpack.config.js --watch",
+    "build": "cd trip-advisor-service && npx webpack --config webpack.config.js --watch",
     "hot": "webpack serve --open"
   },
   "repository": {

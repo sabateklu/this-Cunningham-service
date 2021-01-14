@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     filename: 'bundle.js',
-    path: '../public'
+    path: path.resolve(__dirname, 'public')
   },
   devtool: 'inline-source-map',
   devServer: {
