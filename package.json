@@ -8,7 +8,7 @@
     "seed": "cd trip-advisor-service && node db/seed.js && cd ..",
     "start": "cd trip-advisor-service && npx nodemon server",
     "build": "cd trip-advisor-service && npx webpack --config webpack.config.js --watch",
-    "hot": "webpack serve --open",
+    "hot": "webpack serve --open"
   },
   "repository": {
     "type": "git",
