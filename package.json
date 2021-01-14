@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "cd trip-advisor-service && node db/index.js && cd ..",
+    "seed": "cd trip-advisor-service && node db/seed.js && cd ..",
     "start": "cd trip-advisor-service && npx nodemon server"
   },
   "repository": {

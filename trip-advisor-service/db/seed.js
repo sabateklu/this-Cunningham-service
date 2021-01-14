@@ -1,3 +1,5 @@
+const { ShowCase } = require('./index.js');
+
 const cities = [
   'Bangkok, Thailand',
   'Samut Prakan, Thailand',
@@ -107,12 +109,20 @@ class Attraction {
     }
 }
 
-let attractions = [];
+let seedData = [];
 
 for (let i = 0; i < 100; i++) {
   let newAttraction = new Attraction(i);
 
-  attractions.push(newAttraction);
+  seedData.push(newAttraction);
 }
 
-module.exports = attractions;
+ShowCase.find()
+  .then((result) => {
+    if (result.length === 0) {
+      ShowCase.create(seedData)
+    } else {
+      console.log('db already seeded')
+    }
+  })
+  .catch(err => console.log('error finding db', err))
