@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -15,13 +15,13 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [ 'babel-loader' ]
+        use: ['babel-loader'],
       },
-      { test: /\.(css)$/, use: [ 'style-loader', 'css-loader' ] }
-    ]
+      { test: /\.(css)$/, use: ['style-loader', 'css-loader'] },
+    ],
   },
   resolve: {
-    extensions: [ '*', '.js', '.jsx' ]
+    extensions: ['*', '.js', '.jsx'],
   },
-  mode: 'development'
-}
+  mode: 'development',
+};
