@@ -122,9 +122,9 @@ for (let i = 0; i < 100; i += 1) {
 ShowCase.find()
   .then((result) => {
     if (result.length === 0) {
-      ShowCase.create(seedData)
+      ShowCase.create(seedData);
     } else {
-      console.log('db already seeded')
+      console.log('db already seeded');
     }
   })
-  .catch(err => console.log('error finding db', err))
+  .catch((err) => console.log('error finding db', err));

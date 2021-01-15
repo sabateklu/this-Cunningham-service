@@ -4,7 +4,7 @@ module.exports = {
   entry: './trip-advisor-service/src/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'trip-advisor-service/public')
+    path: path.resolve(__dirname, 'trip-advisor-service/public'),
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -25,4 +25,3 @@ module.exports = {
   },
   mode: 'development',
 };
-

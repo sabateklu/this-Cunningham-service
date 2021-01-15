@@ -17,7 +17,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx'],
 
   // setupFilesAfterEnv: ['jest-enzyme'], //points to npm package
-  setupFilesAfterEnv: ['./enzyme.config.js'], //points to config file (both options work)
+  setupFilesAfterEnv: ['./enzyme.config.js'], // points to config file (both options work)
 
   testEnvironment: 'enzyme',
 
