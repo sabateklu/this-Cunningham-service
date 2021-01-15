@@ -13,8 +13,9 @@ docker:
 # documented at https://circleci.com/docs/2.0/circleci-images/
 # - image: circleci/mongo:3.4.4
 steps:
-  - run: npm install
-  - run: npm run test
+- checkout
+- run: npm install
+- run: npm run test
 # working_directory: ~/repo
 # steps:
 # - checkout
