@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "seed": "cd trip-advisor-service && node db/index.js && cd ..",
+    "seed": "cd trip-advisor-service && node db/seed.js && cd ..",
     "start": "cd trip-advisor-service && npx nodemon server",
     "build": "npx webpack --config webpack.config.js --watch",
     "hot": "webpack serve --open"

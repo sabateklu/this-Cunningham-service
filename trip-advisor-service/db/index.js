@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
-const seedData = require('./seed.js')
 
 mongoose.connect('mongodb://localhost/tripAdvisor', {
-  useNewUrlParser: true , useUnifiedTopology: true
+  useNewUrlParser: true, useUnifiedTopology: true,
 })
   .then(() => console.log('Success connecting to mongo Trip Advisor'))
-  .catch(()=> console.log('err connecting to mongo', err))
+  .catch((err) => console.log('err connecting to mongo', err));
 
 const showcaseSchema = new mongoose.Schema({
   attractionTitle: String,
@@ -16,26 +15,18 @@ const showcaseSchema = new mongoose.Schema({
   overview: {
     description: String,
     isOpen: Boolean,
-    //stretch goal to display all hours on click
+    // stretch goal to display all hours on click
     suggestedDuration: Number,
-    address: String
-    //stretch goal to have map image link you can click on (could be fake map)
+    address: String,
+    // stretch goal to have map image link you can click on (could be fake map)
   },
   imageUrl: [String, String, String, String, String],
   travelersChoiceAward: Boolean,
   likedStatus: Boolean,
   ticketPrice: Number,
   // availability: Date (Stretch goal)
-})
+});
 
 const ShowCase = mongoose.model('Showcase', showcaseSchema);
 
-ShowCase.find()
-  .then((result) => {
-    if (result.length === 0) {
-      ShowCase.create(seedData)
-    } else {
-      console.log('db already seeded')
-    }
-  })
-  .catch(err => console.log('error finding db', err))
+module.exports.ShowCase = ShowCase;
