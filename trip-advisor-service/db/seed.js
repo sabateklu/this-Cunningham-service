@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const { ShowCase } = require('./index.js');
 
 const cities = [
@@ -122,9 +123,13 @@ for (let i = 0; i < 100; i += 1) {
 ShowCase.find()
   .then((result) => {
     if (result.length === 0) {
-      ShowCase.create(seedData);
+      ShowCase.create(seedData)
+        .then(() => {
+          mongoose.connection.close();
+        });
     } else {
       console.log('db already seeded');
+      mongoose.connection.close();
     }
   })
   .catch((err) => console.log('error finding db', err));
