@@ -11,6 +11,7 @@ const showcaseSchema = new mongoose.Schema({
   city: String,
   reviews: Number,
   relativeRanking: [Number, Number],
+  ratio: Number,
   attractionType: String,
   overview: {
     description: String,
