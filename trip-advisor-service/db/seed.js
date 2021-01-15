@@ -81,8 +81,6 @@ const urlGen = function (id) {
   return `https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_${id}.jpg`;
 };
 
-const bools = [true, false];
-
 const randomGenerator = function (min, list) {
   if (typeof list === 'number') {
     return (Math.floor(Math.random() * list) + min);
@@ -90,11 +88,23 @@ const randomGenerator = function (min, list) {
   return list[Math.floor(Math.random() * list.length)];
 };
 
+const picsListGen = function () {
+  const pics = [];
+  const max = Math.floor(Math.random() * 30) + 1;
+  for (let i = 0; i < max; i += 1) {
+    pics.push(urlGen(randomGenerator(0, 100)));
+  }
+  return pics;
+};
+
+const bools = [true, false];
+
 class Attraction {
   constructor(id) {
     this.attractionTitle = randomGenerator(null, attractionTitles);
     this.city = randomGenerator(null, cities);
     this.relativeRanking = [randomGenerator(0, 17), randomGenerator(17, 100)];
+    this.ratio = this.relativeRanking[0] / this.relativeRanking[1];
     this.attractionType = randomGenerator(null, attractionTypes);
     this.reviews = randomGenerator(0, 3000);
     this.overview = {
@@ -103,9 +113,7 @@ class Attraction {
       suggestedDuration: randomGenerator(0, 200),
       address: randomGenerator(null, addresses),
     };
-    this.imageUrl = [urlGen(id),
-      urlGen(randomGenerator(0, 100)), urlGen(randomGenerator(0, 100)),
-      urlGen(randomGenerator(0, 100)), urlGen(randomGenerator(0, 100))];
+    this.imageUrl = [urlGen(id), ...picsListGen()];
     this.travelersChoiceAward = randomGenerator(null, bools);
     this.likedStatus = randomGenerator(null, bools);
     this.ticketPrice = randomGenerator(0, 500);
@@ -125,6 +133,7 @@ ShowCase.find()
     if (result.length === 0) {
       ShowCase.create(seedData)
         .then(() => {
+          console.log('db seeded!');
           mongoose.connection.close();
         });
     } else {
