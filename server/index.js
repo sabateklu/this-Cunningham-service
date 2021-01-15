@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const { ShowCase } = require('../db/index.js');
 
 const app = express();
@@ -8,12 +9,12 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static('../public'));
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.get('/api/showcase', (req, res) => {
-  ShowCase.find().sort({ relativeRanking: -1 })
+  ShowCase.find().sort({ ratio: 1 })
     .then((data) => res.status(200).send(data))
-    .then((err) => {
+    .catch((err) => {
       console.log('Err GET ALL ', err);
       res.status(400).send();
     });
