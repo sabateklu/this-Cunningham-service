@@ -1,4 +1,6 @@
-version: 2
+version: '2.1'
+orbs:
+  node: circleci/node@4.1.0
 jobs:
   build:
     docker:
@@ -10,9 +12,15 @@ jobs:
       - run: npm run seed
       - run: npm test
   lint:
+    executor: node/default
     steps:
       - checkout
       - node/install-packages
       - run:
           name: 'linting'
           command: npm run lint
+workflows:
+  run-unit-tests:
+    jobs:
+      - lint
+      - test
