@@ -10,6 +10,15 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('../public'));
 
+app.get('/api/showcase', (req, res) => {
+  ShowCase.find().sort({ relativeRanking: -1 })
+    .then((data) => res.status(200).send(data))
+    .then((err) => {
+      console.log('Err GET ALL ', err);
+      res.status(400).send();
+    });
+});
+
 app.get('/api/showcase/:id', (req, res) => {
   const { id } = req.params;
   console.log(id);
