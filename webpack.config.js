@@ -1,14 +1,14 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './trip-advisor-service/src/app.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'trip-advisor-service/public')
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './public',
+    contentBase: './trip-advisor-service/public',
   },
   module: {
     rules: [
