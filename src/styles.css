@@ -19,6 +19,23 @@ html, body {
   border: 1px solid black;
 }
 
+.reviews-like {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviews {
+  margin: 0;
+}
+
+.ranking-share {
+  display: flex;
+  justify-content: space-between;
+}
+.ranking {
+  margin: 0;
+}
+
 .overview {
   grid-row: 3/4;
   grid-column: 1/2;
