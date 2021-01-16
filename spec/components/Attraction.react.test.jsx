@@ -80,5 +80,11 @@ describe('Attraction Component', () => {
       expect(wrapper.children()).toHaveLength(1);
       expect(wrapper.find('.attraction')).toHaveLength(1);
     });
+    test('Should remove Loading div upon mounting', () => {
+      wrapper.setState({ current: data });
+      expect(wrapper.containsMatchingElement(
+        <div className="loading">Loading...</div>,
+      )).toBeFalsy();
+    });
   });
 });
