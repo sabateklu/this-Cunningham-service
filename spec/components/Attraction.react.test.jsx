@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { shallow, mount } from 'enzyme';
 // import renderer from 'react-test-renderer';
 // import { shallow, mount, render } from 'enzyme';
@@ -7,6 +6,7 @@ import Attraction from '../../src/components/Attraction';
 import Header from '../../src/components/Header';
 import Images from '../../src/components/Images';
 import Overview from '../../src/components/Overview';
+import Tickets from '../../src/components/Tickets';
 
 const data = {
   overview: {
@@ -85,6 +85,22 @@ describe('Attraction Component', () => {
       expect(wrapper.containsMatchingElement(
         <div className="loading">Loading...</div>,
       )).toBeFalsy();
+    });
+    test('div.attraction should have 4 children', () => {
+      wrapper.setState({ current: data });
+      expect(wrapper.find('.attraction').children()).toHaveLength(4);
+      expect(wrapper.find('.attraction').children().containsMatchingElement(
+        Header,
+      )).toBeTruthy();
+      expect(wrapper.find('.attraction').children().containsMatchingElement(
+        Overview,
+      )).toBeTruthy();
+      expect(wrapper.find('.attraction').children().containsMatchingElement(
+        Tickets,
+      )).toBeTruthy();
+      expect(wrapper.find('.attraction').children().containsMatchingElement(
+        Images,
+      )).toBeTruthy();
     });
   });
 });
