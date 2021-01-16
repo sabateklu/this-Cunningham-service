@@ -11,21 +11,31 @@ import Overview from '../../src/components/Overview';
 //   <div className="attraction">Test</div>
 // );
 
-describe('Attraction', () => {
-  it('this.state.current should equal null on initial render', () => {
-    expect(shallow(<Attraction />).state().current).toBeNull();
+describe('Attraction Component', () => {
+  describe('Initial Render', () => {
+    test('this.state.current should equal null on initial render', () => {
+      expect(shallow(<Attraction />).state().current).toBeNull();
+    });
+    test('should render Loading Div on initial render', () => {
+      expect(shallow(<Attraction />).containsMatchingElement(
+        <div className="loading">Loading...</div>,
+      )).toBeTruthy();
+    });
+    test('should only have one child element on initial render', () => {
+      expect(shallow(<Attraction />).children()).toHaveLength(1);
+    });
   });
-  it('should render Loading Div on initial render', () => {
-    expect(shallow(<Attraction />).containsMatchingElement(
-      <div className="loading">Loading...</div>,
-    )).toBeTruthy();
-  });
-  it('should only have one child element on initial render', () => {
-    expect(shallow(<Attraction />).children()).toHaveLength(1);
-  });
-  it('should mount and call componentDidMount once', () => {
-    const fn = jest.spyOn(Attraction.prototype, 'componentDidMount');
-    mount(<Attraction />);
-    expect(fn).toHaveBeenCalled();
+  describe('Upon Mounting', () => {
+    let fn;
+    beforeEach(() => {
+      fn = jest.spyOn(Attraction.prototype, 'componentDidMount');
+      return mount(<Attraction />);
+    });
+    afterEach(() => {
+      mount(<Attraction />).unmount();
+    });
+    test('should mount and call componentDidMount once', () => {
+      expect(fn).toHaveBeenCalled();
+    });
   });
 });
