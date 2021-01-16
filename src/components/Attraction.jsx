@@ -1,8 +1,15 @@
 import React from 'react';
+import Header from './Header';
+import Overview from './Overview';
+import Tickets from './Tickets';
+import Images from './Images';
 
 const Attraction = (props) => (
   <div className="attraction">
-    Attraction
+    <Header />
+    <Overview />
+    <Tickets />
+    <Images />
   </div>
 );
 
