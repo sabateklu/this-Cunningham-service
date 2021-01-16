@@ -42,6 +42,14 @@ html, body {
   border: 1px solid black;
 }
 
+.address-container {
+  display: flex;
+}
+
+p.address {
+  margin: 0;
+}
+
 .tickets {
   grid-row: 4/5;
   grid-column: 1/2;

@@ -29,7 +29,7 @@ export default class Attraction extends React.Component {
         {current ? (
           <div className="attraction">
             <Header current={current} />
-            <Overview current={current} />
+            <Overview overview={current.overview} />
             <Tickets current={current} />
             <Images current={current} />
           </div>

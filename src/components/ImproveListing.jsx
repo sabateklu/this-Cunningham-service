@@ -2,7 +2,7 @@ import React from 'react';
 
 const ImproveListing = (props) => (
   <form onSubmit={() => {}}>
-    Form
+    Improve This Listing
   </form>
 );
 
