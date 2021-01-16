@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Images extends React.Component {
   constructor(props) {
@@ -10,8 +11,15 @@ export default class Images extends React.Component {
   }
 
   render() {
+    const { images } = this.props;
     return (
-      <div className="images">Images</div>
+      <div className="images">
+        <img src={images[0]} alt="" />
+      </div>
     );
   }
 }
+
+Images.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

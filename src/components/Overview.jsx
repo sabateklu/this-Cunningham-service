@@ -6,7 +6,7 @@ const Overview = ({ overview }) => (
   <div className="overview">
     <h4 className="overview-header">Overview</h4>
     <p className="description">{overview.description}</p>
-    <p className="open-closed">{overview.isOpen ? 'Open Now' : 'Closed'}: Hours Here</p>
+    <p className="open-closed"><strong>{overview.isOpen ? 'Open Now' : 'Closed'}:</strong> Hours Here</p>
     <p className="duration">Suggested Duration: {overview.suggestedDuration} minutes</p>
     <div className="address-container">
       <div className="address">Address:</div>

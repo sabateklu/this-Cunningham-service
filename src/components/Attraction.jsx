@@ -31,7 +31,7 @@ export default class Attraction extends React.Component {
             <Header current={current} />
             <Overview overview={current.overview} />
             <Tickets current={current} />
-            <Images current={current} />
+            <Images images={current.imageUrl} />
           </div>
         ) : <div className="loading">Loading...</div>}
       </>
