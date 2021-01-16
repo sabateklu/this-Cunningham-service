@@ -11,7 +11,7 @@ export default class Images extends React.Component {
 
   render() {
     return (
-      <div>Images</div>
+      <div className="images">Images</div>
     );
   }
 }

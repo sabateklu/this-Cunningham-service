@@ -1,3 +1,38 @@
+/* @media screen and (max-width: 1000px) {
+
+} */
+/* @media screen and (min-width: 1001px) {
+} */
 html, body {
   height: 100%;
+}
+
+.attraction {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 55px 180px 250px 170px 30px;
+}
+
+.header {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  border: 1px solid black;
+}
+
+.overview {
+  grid-row: 3/4;
+  grid-column: 1/2;
+  border: 1px solid black;
+}
+
+.tickets {
+  grid-row: 4/5;
+  grid-column: 1/2;
+  border: 1px solid black;
+}
+
+.images {
+  grid-row: 2/5;
+  grid-column: 2/3;
+  border: 1px solid black;
 }
