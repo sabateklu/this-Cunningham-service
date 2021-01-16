@@ -2,11 +2,11 @@ import React from 'react';
 // import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 // import { shallow, mount, render } from 'enzyme';
-// import Attraction from '../../src/components/Attraction.js';
+import Attraction from '../../src/components/Attraction';
 
-const Attraction = () => (
-  <div className="attraction">Test</div>
-);
+// const Attraction = () => (
+//   <div className="attraction">Test</div>
+// );
 
 describe('Attraction', () => {
   it('should render without throwing an error', () => {
