@@ -23,4 +23,9 @@ describe('Attraction', () => {
   it('should only have one child element on initial render', () => {
     expect(shallow(<Attraction />).children()).toHaveLength(1);
   });
+  it('should mount and call componentDidMount once', () => {
+    const fn = jest.spyOn(Attraction.prototype, 'componentDidMount');
+    mount(<Attraction />);
+    expect(fn).toHaveBeenCalled();
+  });
 });
