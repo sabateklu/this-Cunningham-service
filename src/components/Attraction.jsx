@@ -11,8 +11,15 @@ export default class Attraction extends React.Component {
     this.state = {
       current: null,
       likeHover: false,
+      form: {
+        description: '',
+        isOpen: false,
+        suggestedDuration: 0,
+        address: '',
+      }
     };
     this.updateHeartHover = this.updateHeartHover.bind(this);
+    this.handleFormChange = this.handleFormChange.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +29,9 @@ export default class Attraction extends React.Component {
           current: data[0],
         });
       }).catch((err) => console.log('error GETTING all', err));
+  }
+
+  handleFormChange() {
   }
 
   updateHeartHover() {

@@ -31,18 +31,48 @@ describe('<Overview />', () => {
     )).toBe(true);
     wrapper.unmount();
   });
-  describe('<ImproveListing />', () => {
+  describe('<ImproveListing /> Form', () => {
     let improveListing;
+    let app;
+    let instance;
     beforeEach(() => {
-      improveListing = shallow(<ImproveListing />);
+      app = mount(<Attraction />);
+      instance = app.instance();
+      improveListing = mount(<ImproveListing clicked={false} />);
     });
-    test('it should render a form', () => {
-      expect(improveListing.find('.improve').type()).toBe('form');
+    afterEach(() => {
+      app.unmount();
       improveListing.unmount();
     });
-    test('it should have 4 input fields', () => {
-      const form = improveListing.find('form');
-      expect(form.find('input')).toHaveLength(4);
+    test('it should render "Improve this listing initially"', () => {
+      expect(improveListing.text()).toEqual('Improve This Listing');
+    });
+    test('it should render a form', () => {
+      improveListing.setProps({ clicked: true });
+      expect(improveListing.find('.improve').type()).toBe('form');
+    });
+    test.skip('it should have 4 input fields', () => {
+      improveListing.setProps({ clicked: true });
+      expect(improveListing.find('input')).toHaveLength(4);
+    });
+    test('handleformChange should be a function', () => {
+      improveListing.setProps({ clicked: true });
+      improveListing.setProps({ handleFormChange: instance.handleFormChange });
+      expect(typeof improveListing.props().handleFormChange).toEqual('function');
+    });
+    test.skip('it should call handleFormChange when there is a change', () => {
+      improveListing.setProps({ clicked: true });
+      const spy = jest.spyOn(instance, 'handleFormChange');
+      improveListing.setProps({ handleFormChange: instance.handleFormChange });
+      const input = improveListing.find('input');
+      input.simulate('change');
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+    test.skip('it should handle form-change by updating state', () => {
+
+    });
+    test.skip('it should update form data with state', () => {
+
     });
   });
 });
