@@ -32,12 +32,16 @@ export default class Attraction extends React.Component {
   }
 
   render() {
-    const { current } = this.state;
+    const { current, likeHover } = this.state;
     return (
       <>
         {current ? (
           <div className="attraction">
-            <Header current={current} updateHeartHover={this.updateHeartHover} />
+            <Header
+              current={current}
+              updateHeartHover={this.updateHeartHover}
+              likeHover={likeHover}
+            />
             <Overview overview={current.overview} />
             <Tickets current={current} />
             <Images images={current.imageUrl} />
