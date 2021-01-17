@@ -24,8 +24,8 @@ describe('<Header />', () => {
     });
     test('updateHeartHover should be called once on mouse-enter', () => {
       const instance = app.instance();
-      // pass as prop here, it's already spied on
       const spy = jest.spyOn(instance, 'updateHeartHover'); // spy on func before you pass as a prop!
+      // pass as prop here, it's already spied on
       wrapper.setProps({ updateHeartHover: instance.updateHeartHover });
       const reviews = wrapper.find('.header').find('.reviews-like');
       reviews.find(FaRegHeart).simulate('mouseenter');
