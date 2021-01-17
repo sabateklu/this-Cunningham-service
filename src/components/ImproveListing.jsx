@@ -1,7 +1,8 @@
 import React from 'react';
 
 const ImproveListing = (props) => (
-  <form onSubmit={() => {}}>
+  <form className="improve" onSubmit={() => {}}>
+    <input type="text"/>
     Improve This Listing
   </form>
 );

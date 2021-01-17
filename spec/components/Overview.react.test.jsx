@@ -37,7 +37,12 @@ describe('<Overview />', () => {
       improveListing = shallow(<ImproveListing />);
     });
     test('it should render a form', () => {
-      expect(improveListing.find('form').type()).toBe('form');
+      expect(improveListing.find('.improve').type()).toBe('form');
+      improveListing.unmount();
+    });
+    test('it should have 4 input fields', () => {
+      const form = improveListing.find('form');
+      expect(form.find('input')).toHaveLength(4);
     });
   });
 });
