@@ -22,6 +22,15 @@ describe('<Header />', () => {
       const reviews = wrapper.find('.header').find('.reviews-like');
       expect(reviews.find('.reviews').text()).toEqual('2876 Reviews ');
     });
+    test('updateHeartHover should be called once on mouse-enter', () => {
+      const instance = app.instance();
+      // pass as prop here, it's already spied on
+      const spy = jest.spyOn(instance, 'updateHeartHover'); // spy on func before you pass as a prop!
+      wrapper.setProps({ updateHeartHover: instance.updateHeartHover });
+      const reviews = wrapper.find('.header').find('.reviews-like');
+      reviews.find(FaRegHeart).simulate('mouseenter');
+      expect(spy).toHaveBeenCalled();
+    });
     test('state.likeHover should equal true on mouseOver and false on mouseOut', () => {
       const instance = app.instance();
       wrapper.setProps({ updateHeartHover: instance.updateHeartHover });
