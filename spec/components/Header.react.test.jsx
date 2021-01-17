@@ -23,15 +23,14 @@ describe('<Header />', () => {
       expect(reviews.find('.reviews').text()).toEqual('2876 Reviews ');
     });
     test('state.likeHover should equal true on mouseOver and false on mouseOut', () => {
+      const instance = app.instance();
+      wrapper.setProps({ updateHeartHover: instance.updateHeartHover });
       const reviews = wrapper.find('.header').find('.reviews-like');
       expect(app.state().likeHover).toBeFalsy();
-      reviews.find(FaRegHeart).simulate('mouseover'); // make sure these are the right events
+      reviews.find(FaRegHeart).simulate('mouseenter'); // make sure these are the right events
       expect(app.state().likeHover).toBeTruthy();
       reviews.find(FaRegHeart).simulate('mouseleave');
       expect(app.state().likeHover).toBeFalsy();
     });
   });
 });
-
-/**onMouseEnter={() => this.hoverOn()}
-   onMouseLeave={() => this.hoverOff()} */

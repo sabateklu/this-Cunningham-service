@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.43% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/5</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.43% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>6/10</span>
             </div>
         
             
@@ -97,7 +97,16 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,14 +115,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,8 +133,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,7 +167,9 @@ export default class Attraction extends React.Component {
     super(props);
     this.state = {
       current: null,
+      likeHover: false,
     };
+    this.updateHeartHover = this.updateHeartHover.bind(this);
   }
 &nbsp;
   componentDidMount() {
@@ -161,13 +181,20 @@ export default class Attraction extends React.Component {
       }).catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; <span class="cstat-no" title="statement not covered" >console.log('error GETTING all', err))</span>;
   }
 &nbsp;
+<span class="fstat-no" title="function not covered" >  up</span>dateHeartHover() {
+    const { likeHover } = <span class="cstat-no" title="statement not covered" >this.state;</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({</span>
+      likeHover: !likeHover,
+    });
+  }
+&nbsp;
   render() {
     const { current } = this.state;
     return (
       &lt;&gt;
         {current ? (
           &lt;div className="attraction"&gt;
-            &lt;Header current={current} /&gt;
+            &lt;Header current={current} updateHeartHover={this.updateHeartHover} /&gt;
             &lt;Overview overview={current.overview} /&gt;
             &lt;Tickets current={current} /&gt;
             &lt;Images images={current.imageUrl} /&gt;
@@ -184,7 +211,7 @@ export default class Attraction extends React.Component {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Jan 16 2021 15:30:13 GMT-0700 (Mountain Standard Time)
+                at Sat Jan 16 2021 18:01:24 GMT-0700 (Mountain Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

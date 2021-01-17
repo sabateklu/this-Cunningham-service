@@ -10,7 +10,9 @@ export default class Attraction extends React.Component {
     super(props);
     this.state = {
       current: null,
+      likeHover: false,
     };
+    this.updateHeartHover = this.updateHeartHover.bind(this);
   }
 
   componentDidMount() {
@@ -22,13 +24,20 @@ export default class Attraction extends React.Component {
       }).catch((err) => console.log('error GETTING all', err));
   }
 
+  updateHeartHover() {
+    const { likeHover } = this.state;
+    this.setState({
+      likeHover: !likeHover,
+    });
+  }
+
   render() {
     const { current } = this.state;
     return (
       <>
         {current ? (
           <div className="attraction">
-            <Header current={current} />
+            <Header current={current} updateHeartHover={this.updateHeartHover} />
             <Overview overview={current.overview} />
             <Tickets current={current} />
             <Images images={current.imageUrl} />
