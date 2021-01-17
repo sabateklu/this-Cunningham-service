@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1610845284545" clover="3.2.0">
-  <project timestamp="1610845284545" name="All files">
-    <metrics statements="26" coveredstatements="22" conditionals="4" coveredconditionals="3" methods="14" coveredmethods="9" elements="44" coveredelements="34" complexity="0" loc="26" ncloc="26" packages="2" files="7" classes="7"/>
+<coverage generated="1610909724504" clover="3.2.0">
+  <project timestamp="1610909724504" name="All files">
+    <metrics statements="26" coveredstatements="24" conditionals="6" coveredconditionals="4" methods="14" coveredmethods="10" elements="46" coveredelements="38" complexity="0" loc="26" ncloc="26" packages="2" files="7" classes="7"/>
     <package name="spec.components">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="mockData.js" path="/Users/christophercunningham/hack-reactor/bld14/FEC/this-Cunningham-service/spec/components/mockData.js">
@@ -9,26 +9,26 @@
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="26" coveredstatements="22" conditionals="4" coveredconditionals="3" methods="14" coveredmethods="9"/>
+      <metrics statements="26" coveredstatements="24" conditionals="6" coveredconditionals="4" methods="14" coveredmethods="10"/>
       <file name="Attraction.jsx" path="/Users/christophercunningham/hack-reactor/bld14/FEC/this-Cunningham-service/src/components/Attraction.jsx">
-        <metrics statements="10" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="3"/>
-        <line num="10" count="14" type="stmt"/>
-        <line num="11" count="14" type="stmt"/>
-        <line num="15" count="14" type="stmt"/>
-        <line num="19" count="14" type="stmt"/>
+        <metrics statements="10" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="4"/>
+        <line num="10" count="15" type="stmt"/>
+        <line num="11" count="15" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+        <line num="19" count="15" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="35" count="19" type="stmt"/>
-        <line num="36" count="19" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="35" count="21" type="stmt"/>
+        <line num="36" count="21" type="stmt"/>
       </file>
       <file name="Header.jsx" path="/Users/christophercunningham/hack-reactor/bld14/FEC/this-Cunningham-service/src/components/Header.jsx">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="7" count="7" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
         <line num="26" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
       </file>
       <file name="Images.jsx" path="/Users/christophercunningham/hack-reactor/bld14/FEC/this-Cunningham-service/src/components/Images.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
