@@ -19,7 +19,7 @@ export default {
     'https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_54.jpg',
     'https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_7.jpg',
     'https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_80.jpg',
-    'https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_87.jpg'
+    'https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_87.jpg',
   ],
   _id: '6001f45dc6cc5d2005f7d2d7',
   attractionTitle: 'Sukhothai Old City',
