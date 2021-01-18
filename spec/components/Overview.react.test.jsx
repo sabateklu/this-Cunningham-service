@@ -38,7 +38,7 @@ describe('<Overview />', () => {
     beforeEach(() => {
       app = mount(<Attraction />);
       instance = app.instance();
-      improveListing = mount(<ImproveListing clicked={false} />);
+      improveListing = mount(<ImproveListing />);
     });
     afterEach(() => {
       app.unmount();
@@ -55,24 +55,32 @@ describe('<Overview />', () => {
       improveListing.setProps({ clicked: true });
       expect(improveListing.find('input')).toHaveLength(4);
     });
-    test('handleformChange should be a function', () => {
-      improveListing.setProps({ clicked: true });
-      improveListing.setProps({ handleFormChange: instance.handleFormChange });
-      expect(typeof improveListing.props().handleFormChange).toEqual('function');
-    });
-    test.skip('it should call handleFormChange when there is a change', () => {
-      improveListing.setProps({ clicked: true });
-      const spy = jest.spyOn(instance, 'handleFormChange');
-      improveListing.setProps({ handleFormChange: instance.handleFormChange });
-      const input = improveListing.find('input');
-      input.simulate('change');
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
-    test.skip('it should handle form-change by updating state', () => {
-
-    });
-    test.skip('it should update form data with state', () => {
-
+    describe('HandleFormChange', () => {
+      test('handleformChange should be a function', () => {
+        improveListing.setProps({ clicked: true });
+        improveListing.setProps({ handleFormChange: instance.handleFormChange });
+        expect(typeof improveListing.props().handleFormChange).toEqual('function');
+      });
+      test.skip('it should call handleFormChange when there is a change', () => {
+        improveListing.setProps({ clicked: true });
+        const spy = jest.spyOn(instance, 'handleFormChange');
+        improveListing.setProps({ handleFormChange: instance.handleFormChange });
+        const input = improveListing.find('input');
+        input.simulate('change');
+        expect(spy).toHaveBeenCalledTimes(1);
+      });
+      test('it should handle form-change by updating state', () => {
+        improveListing.setProps({ clicked: true });
+        instance.handleFormChange({ target: { name: 'description', value: 'Test' } });
+        expect(app.state().form.description).toEqual('Test');
+      });
+      test.skip('it should update form data with state', () => {
+        improveListing.setProps({ clicked: true });
+        // instance.handleFormChange({ target: { value: 'Test' } });
+        const input = improveListing.find('.input').first();
+        input.simulate('change', { target: { value: 'test' } });
+        expect(input.props().form.description).toEqual(input.instance().value);
+      });
     });
   });
 });
