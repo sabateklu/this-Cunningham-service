@@ -24,10 +24,25 @@ describe('<Images />', () => {
     expect(images.instance().props.travelersChoice).toEqual(false);
     expect(images.find('.award')).toHaveLength(0);
   });
-  test.skip('Images should have "prev"/"next" buttons to scroll thru pictures if there are more than one picture', () => {
-
+  test('Images should have "prev"/"next" buttons to scroll thru pictures if there are more than one picture', () => {
+    expect(images.instance().props.images).toHaveLength(10);
+    expect(images.find('button')).toHaveLength(2);
+    images.setProps({ images: [] });
+    expect(images.find('button')).toHaveLength(0);
   });
-  test.skip('Images should', () => {
-
+  test('Images should change to next/prev image if next/prev button is clicked ', () => {
+    const instance = images.instance();
+    const spy = jest.spyOn(instance, 'changeImage');
+    const nextButton = images.find('button.next');
+    const prevButton = images.find('button.prev');
+    expect(instance.state.displayedImage).toEqual('https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_10.jpg');
+    nextButton.simulate('click');
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('next');
+    expect(instance.state.displayedImage).toEqual('https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_13.jpg');
+    prevButton.simulate('click');
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenCalledWith('prev');
+    expect(instance.state.displayedImage).toEqual('https://d3tteoxp56tq1d.cloudfront.net/images/tripadvisor_thailand_10.jpg');
   });
 });

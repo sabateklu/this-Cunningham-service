@@ -125,21 +125,35 @@ p.address {
 }
 
 .prev {
+  opacity: .5;
   position: absolute;
   bottom: 45%;
   top: 45%;
   /* right: 0; */
   left: 0;
   width: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 30px;
 }
 
 .next {
+  opacity: .5;
   position: absolute;
   bottom: 45%;
   top: 45%;
   right: 0;
   /* left: 0; */
   width: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font-size: 30px;
 }
 
 .award {
