@@ -11,10 +11,15 @@ export default class Images extends React.Component {
   }
 
   render() {
-    const { images } = this.props;
+    const { images, travelersChoice } = this.props;
     return (
       <div className="images">
-        <img src={images[0]} alt="" />
+        {travelersChoice ? <div className="award">Award</div> : null}
+        <div className="overlay">
+          <button type="button" className="next">{'>'}</button>
+          <button type="button" className="prev">{'<'}</button>
+        </div>
+        <img src={images[0]} alt="" className="image" />
       </div>
     );
   }
@@ -22,4 +27,5 @@ export default class Images extends React.Component {
 
 Images.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  travelersChoice: PropTypes.bool.isRequired,
 };
