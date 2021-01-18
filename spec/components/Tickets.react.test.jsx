@@ -15,4 +15,7 @@ describe('<Tickets />', () => {
     expect(tickets.find('.ticket-header').text()).toEqual('Test Attraction Entrance Tickets');
     expect(tickets.find('.ticket-price').text()).toEqual('from $500');
   });
+  test('Tickets contains "Check Availability" button', () => {
+    expect(tickets.find('button').text()).toEqual('Check Availability');
+  });
 });
