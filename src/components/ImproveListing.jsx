@@ -1,9 +1,51 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const ImproveListing = (props) => (
-  <form onSubmit={() => {}}>
-    Improve This Listing
-  </form>
+const ImproveListing = ({
+  clicked, form, handleFormChange, handleClick,
+}) => (
+  <div className="improveListing">
+    {clicked ? (
+      <form className="improve" onSubmit={() => {}}>
+        <input name="description" placeholder="description" type="text" value={form.description} onChange={handleFormChange} />
+        <label htmlFor="duration">
+          How long will it take to experience this attraction?
+          <input type="number" id="duration" name="suggestedDuration" min="1" max="240" value={form.suggestedDuration} onChange={handleFormChange} />
+          {form.suggestedDuration > 24 ? ` (${(form.suggestedDuration / 24).toFixed(1)} days)` : ' hours' }
+        </label>
+        <label htmlFor="open">
+          <input name="isOpen" type="radio" onChange={handleFormChange} value id="open" />
+          Open
+        </label>
+        <label htmlFor="closed">
+          <input name="isOpen" type="radio" onChange={handleFormChange} value="false" id="closed" />
+          Closed
+        </label>
+        <input name="address" type="text" onChange={handleFormChange} value={form.address} />
+      </form>
+    ) : <button type="button" onClick={handleClick}>Improve This Listing</button>}
+  </div>
 );
+
+ImproveListing.propTypes = {
+  clicked: PropTypes.bool,
+  form: PropTypes.shape({
+    description: PropTypes.string,
+    isOpen: PropTypes.bool,
+    suggestedDuration: PropTypes.number,
+    address: PropTypes.string,
+  }),
+  handleFormChange: PropTypes.func,
+  handleClick: PropTypes.func,
+};
+
+ImproveListing.defaultProps = {
+  clicked: false,
+  form: {
+    description: '',
+  },
+  handleFormChange: () => {},
+  handleClick: () => {},
+};
 
 export default ImproveListing;

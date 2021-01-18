@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShare } from 'react-icons/fi';
 
-const Header = ({ current }) => (
+const Header = ({ current, updateHeartHover, likeHover }) => (
   <div className="header">
     <h3 className="header-lg">{current.attractionTitle}</h3>
     <div className="reviews-like">
       <p className="reviews">{current.reviews} Reviews </p>
-      <FaRegHeart color="black" size={20} />
+      <FaRegHeart className="icon" color={likeHover ? 'red' : 'black'} size={20} onMouseEnter={updateHeartHover} onMouseLeave={updateHeartHover} />
     </div>
     <div className="ranking-share">
       <p className="ranking">
@@ -31,5 +31,12 @@ Header.propTypes = {
     city: PropTypes.string,
     attractionType: PropTypes.string,
   }).isRequired,
+  updateHeartHover: PropTypes.func,
+  likeHover: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  updateHeartHover: () => {},
+  likeHover: false,
 };
 export default Header;
