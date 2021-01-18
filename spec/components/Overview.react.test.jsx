@@ -38,7 +38,7 @@ describe('<Overview />', () => {
     beforeEach(() => {
       app = mount(<Attraction />);
       instance = app.instance();
-      improveListing = mount(<ImproveListing />);
+      improveListing = mount(<ImproveListing handleFormChange={() => {}} />);
     });
     afterEach(() => {
       app.unmount();
@@ -51,7 +51,7 @@ describe('<Overview />', () => {
       improveListing.setProps({ clicked: true });
       expect(improveListing.find('.improve').type()).toBe('form');
     });
-    test.skip('it should have 4 input fields', () => {
+    test('it should have 4 input fields', () => {
       improveListing.setProps({ clicked: true });
       expect(improveListing.find('input')).toHaveLength(4);
     });
@@ -61,11 +61,11 @@ describe('<Overview />', () => {
         improveListing.setProps({ handleFormChange: instance.handleFormChange });
         expect(typeof improveListing.props().handleFormChange).toEqual('function');
       });
-      test.skip('it should call handleFormChange when there is a change', () => {
+      test('it should call handleFormChange when there is a change', () => {
         improveListing.setProps({ clicked: true });
         const spy = jest.spyOn(instance, 'handleFormChange');
         improveListing.setProps({ handleFormChange: instance.handleFormChange });
-        const input = improveListing.find('input');
+        const input = improveListing.find('input').first();
         input.simulate('change');
         expect(spy).toHaveBeenCalledTimes(1);
       });
@@ -76,10 +76,10 @@ describe('<Overview />', () => {
       });
       test.skip('it should update form data with state', () => {
         improveListing.setProps({ clicked: true });
-        // instance.handleFormChange({ target: { value: 'Test' } });
-        const input = improveListing.find('.input').first();
-        input.simulate('change', { target: { value: 'test' } });
-        expect(input.props().form.description).toEqual(input.instance().value);
+        const input = improveListing.find('input').first();
+        input.simulate('change', { target: { value: 'test', name: 'description' } });
+        const changedInput = improveListing.find('input').first();
+        expect(changedInput.props().value).toEqual('test');
       });
     });
   });

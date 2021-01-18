@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImproveListing from './ImproveListing';
 
-const Overview = ({ overview }) => (
+const Overview = ({ overview, form, handleFormChange, clicked, handleClick }) => (
   <div className="overview">
     <h4 className="overview-header">Overview</h4>
     <p className="description">{overview.description}</p>
@@ -12,11 +12,14 @@ const Overview = ({ overview }) => (
       <div className="address">Address:</div>
       <p className="address">{overview.address}</p>
     </div>
-    <ImproveListing />
+    <ImproveListing
+      form={form}
+      handleFormChange={handleFormChange}
+      clicked={clicked}
+      handleClick={handleClick}
+    />
   </div>
 );
-
-export default Overview;
 
 Overview.propTypes = {
   overview: PropTypes.shape({
@@ -25,4 +28,18 @@ Overview.propTypes = {
     suggestedDuration: PropTypes.number,
     address: PropTypes.string,
   }).isRequired,
+  form: PropTypes.shape({
+    description: PropTypes.string,
+    isOpen: PropTypes.bool,
+    suggestedDuration: PropTypes.number,
+    address: PropTypes.string,
+  }),
 };
+
+Overview.defaultProps = {
+  form: {
+    description: '',
+  },
+};
+
+export default Overview;

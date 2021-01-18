@@ -16,10 +16,12 @@ export default class Attraction extends React.Component {
         isOpen: false,
         suggestedDuration: 0,
         address: '',
-      }
+      },
+      clickImproved: false,
     };
     this.updateHeartHover = this.updateHeartHover.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -31,7 +33,21 @@ export default class Attraction extends React.Component {
       }).catch((err) => console.log('error GETTING all', err));
   }
 
-  handleFormChange() {
+  handleClick() {
+    const { clickImproved } = this.state;
+    this.setState({
+      clickImproved: !clickImproved,
+    });
+  }
+
+  handleFormChange(e) {
+    const { form } = this.state;
+    this.setState({
+      form: {
+        ...form,
+        [e.target.name]: e.target.value,
+      },
+    });
   }
 
   updateHeartHover() {
@@ -42,7 +58,9 @@ export default class Attraction extends React.Component {
   }
 
   render() {
-    const { current, likeHover } = this.state;
+    const {
+      current, likeHover, form, clickImproved,
+    } = this.state;
     return (
       <>
         {current ? (
@@ -52,7 +70,13 @@ export default class Attraction extends React.Component {
               updateHeartHover={this.updateHeartHover}
               likeHover={likeHover}
             />
-            <Overview overview={current.overview} />
+            <Overview
+              overview={current.overview}
+              form={form}
+              clicked={clickImproved}
+              handleClick={this.handleClick}
+              handleFormChange={this.handleFormChange}
+            />
             <Tickets current={current} />
             <Images images={current.imageUrl} />
           </div>
