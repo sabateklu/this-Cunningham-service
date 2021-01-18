@@ -42,10 +42,21 @@ export default class Attraction extends React.Component {
 
   handleFormChange(e) {
     const { form } = this.state;
+    // must copy new value, cannot modify e.target.value directly
+    let newValue = e.target.value;
+    if (e.target.name === 'suggestedDuration') {
+      newValue = Number(newValue);
+    }
+    if (newValue === 'true') {
+      newValue = true;
+    }
+    if (newValue === 'false') {
+      newValue = false;
+    }
     this.setState({
       form: {
         ...form,
-        [e.target.name]: e.target.value,
+        [e.target.name]: newValue,
       },
     });
   }

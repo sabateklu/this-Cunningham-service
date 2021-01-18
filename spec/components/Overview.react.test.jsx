@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Attraction from '../../src/components/Attraction';
 import ImproveListing from '../../src/components/ImproveListing';
 import Overview from '../../src/components/Overview';
@@ -51,9 +51,9 @@ describe('<Overview />', () => {
       improveListing.setProps({ clicked: true });
       expect(improveListing.find('.improve').type()).toBe('form');
     });
-    test('it should have 4 input fields', () => {
+    test('it should have 5 input fields', () => {
       improveListing.setProps({ clicked: true });
-      expect(improveListing.find('input')).toHaveLength(4);
+      expect(improveListing.find('input')).toHaveLength(5);
     });
     describe('HandleFormChange', () => {
       test('handleformChange should be a function', () => {
@@ -74,12 +74,13 @@ describe('<Overview />', () => {
         instance.handleFormChange({ target: { name: 'description', value: 'Test' } });
         expect(app.state().form.description).toEqual('Test');
       });
-      test.skip('it should update form data with state', () => {
+      test('it should update form data with state passed as prop', () => {
         improveListing.setProps({ clicked: true });
         const input = improveListing.find('input').first();
-        input.simulate('change', { target: { value: 'test', name: 'description' } });
-        const changedInput = improveListing.find('input').first();
-        expect(changedInput.props().value).toEqual('test');
+        expect(input.props().value).toEqual('');
+        improveListing.setProps({ form: { description: 'test' } });
+        const updatedInput = improveListing.find('input').first();
+        expect(updatedInput.props().value).toEqual('test');
       });
     });
   });

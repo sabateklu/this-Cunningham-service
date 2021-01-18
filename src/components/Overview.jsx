@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ImproveListing from './ImproveListing';
 
-const Overview = ({ overview, form, handleFormChange, clicked, handleClick }) => (
+const Overview = ({
+  overview, form, handleFormChange, clicked, handleClick,
+}) => (
   <div className="overview">
     <h4 className="overview-header">Overview</h4>
     <p className="description">{overview.description}</p>
@@ -34,12 +36,18 @@ Overview.propTypes = {
     suggestedDuration: PropTypes.number,
     address: PropTypes.string,
   }),
+  handleFormChange: PropTypes.func,
+  clicked: PropTypes.bool,
+  handleClick: PropTypes.func,
 };
 
 Overview.defaultProps = {
   form: {
     description: '',
   },
+  handleFormChange: () => {},
+  handleClick: () => {},
+  clicked: false,
 };
 
 export default Overview;

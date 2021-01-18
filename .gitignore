@@ -2,4 +2,3 @@ node_modules
 config
 images
 .DS_Store
-coverage
