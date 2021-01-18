@@ -50,7 +50,7 @@ export default class Images extends React.Component {
     return (
       <div className="images">
         {travelersChoice ? <div className="award">Award</div> : null}
-        {images.length ? (
+        {images.length > 1 ? (
           <div className="overlay">
             <button type="button" className="next" onClick={() => this.changeImage('next')}>{'>'}</button>
             <button type="button" className="prev" onClick={() => this.changeImage('prev')}>{'<'}</button>
