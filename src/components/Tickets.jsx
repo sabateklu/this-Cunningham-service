@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Tickets = ({ current }) => (
   <div className="tickets">
@@ -10,4 +11,17 @@ const Tickets = ({ current }) => (
   </div>
 );
 
+Tickets.propTypes = {
+  current: PropTypes.shape({
+    attractionTitle: PropTypes.string,
+    ticketPrice: PropTypes.number,
+  }),
+};
+
+Tickets.defaultProps = {
+  current: {
+    attractionTitle: 'There are no',
+    ticketPrice: 0,
+  },
+};
 export default Tickets;

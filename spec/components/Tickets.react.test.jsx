@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import data from './mockData';
-import Tickets from '../../src/components/Tickets.jsx';
+import Tickets from '../../src/components/Tickets';
 
 describe('<Tickets />', () => {
   let tickets;

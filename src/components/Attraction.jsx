@@ -28,7 +28,7 @@ export default class Attraction extends React.Component {
     axios.get('/api/showcase')
       .then(({ data }) => {
         this.setState({
-          current: data[0],
+          current: data[1],
         });
       }).catch((err) => console.log('error GETTING all', err));
   }
