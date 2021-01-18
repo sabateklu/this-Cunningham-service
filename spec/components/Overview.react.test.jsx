@@ -38,7 +38,7 @@ describe('<Overview />', () => {
     beforeEach(() => {
       app = mount(<Attraction />);
       instance = app.instance();
-      improveListing = mount(<ImproveListing handleFormChange={() => {}} />);
+      improveListing = mount(<ImproveListing />);
     });
     afterEach(() => {
       app.unmount();
