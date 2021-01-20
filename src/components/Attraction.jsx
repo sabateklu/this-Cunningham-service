@@ -19,9 +19,6 @@ export default class Attraction extends React.Component {
         address: '',
       },
       clickImproved: false,
-      overview: {
-        likedStatus: false,
-      },
     };
     this.updateHeartHover = this.updateHeartHover.bind(this);
     this.updateLikeStatus = this.updateLikeStatus.bind(this);
@@ -30,7 +27,6 @@ export default class Attraction extends React.Component {
   }
 
   componentDidMount() {
-    const { overview } = this.state;
     axios.get('/api/showcase')
       .then(({ data }) => {
         this.setState({
@@ -74,8 +70,19 @@ export default class Attraction extends React.Component {
     });
   }
 
-  updateLikeStatus() {
-
+  updateLikeStatus(id) {
+    const { current } = this.state;
+    this.setState({
+      current: {
+        ...current,
+        likedStatus: !current.likedStatus,
+      },
+    }, () => {
+      axios.patch(`api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+        .catch((err) => {
+          console.log('Error PATCH likedStatus ', err);
+        });
+    });
   }
 
   render() {
