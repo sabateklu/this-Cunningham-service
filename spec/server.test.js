@@ -60,7 +60,7 @@ describe('showcase Routes', () => {
   });
   test('/api/showcase/like/:id PATCH route', async () => {
     const initResponse = await request(app).get('/api/showcase');
-    const id = initResponse.body[0]._id;
+    const id = initResponse.body[0]._id; /* eslint-disable-line no-underscore-dangle */
     const response = await request(app).patch(`/api/showcase/like/${id}`)
       .send({ likedStatus: false });
     expect(response.status).toBe(200);
