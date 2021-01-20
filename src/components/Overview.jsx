@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImproveListing from './ImproveListing';
+import css from '../styles/overview.module.css';
 
 const Overview = ({
   overview, form, handleFormChange, clicked, handleClick,
 }) => (
-  <div className="overview">
-    <h4 className="overview-header">Overview</h4>
-    <p className="description">{overview.description}</p>
-    <p className="open-closed"><strong>{overview.isOpen ? 'Open Now' : 'Closed'}:</strong> Hours Here</p>
-    <p className="duration">Suggested Duration: {overview.suggestedDuration} minutes</p>
-    <div className="address-container">
-      <div className="address">Address:</div>
-      <p className="address">{overview.address}</p>
+  <div className={css.overview}>
+    <h4 className={css['overview-header']}>Overview</h4>
+    <p className={css.description}>{overview.description}</p>
+    <p className={css['open-closed']}><strong>{overview.isOpen ? 'Open Now' : 'Closed'}:</strong> Hours Here</p>
+    <p className={css.duration}>Suggested Duration: {overview.suggestedDuration} minutes</p>
+    <div className={css['address-container']}>
+      <div className={css.address}>Address:</div>
+      <p className={css.address}>{overview.address}</p>
     </div>
     <ImproveListing
       form={form}

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from '../styles/tickets.module.css';
 
 const Tickets = ({ current }) => (
-  <div className="tickets">
-    <h3 className="ticket-header">
+  <div className={css.tickets}>
+    <h3 className={css['ticket-header']}>
       {current.attractionTitle} Entrance Tickets
     </h3>
-    <span className="ticket-price">from ${current.ticketPrice}</span>
-    <button className="get-tix-btn" type="button">Check Availability</button>
+    <span className={css['ticket-price']}>from ${current.ticketPrice}</span>
+    <button className={css['get-tix-btn']} type="button">Check Availability</button>
   </div>
 );
 

@@ -4,6 +4,7 @@ import Header from './Header';
 import Overview from './Overview';
 import Tickets from './Tickets';
 import Images from './Images';
+import css from '../styles/attraction.module.css';
 
 export default class Attraction extends React.Component {
   constructor(props) {
@@ -18,13 +19,18 @@ export default class Attraction extends React.Component {
         address: '',
       },
       clickImproved: false,
+      overview: {
+        likedStatus: false,
+      },
     };
     this.updateHeartHover = this.updateHeartHover.bind(this);
+    this.updateLikeStatus = this.updateLikeStatus.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
+    const { overview } = this.state;
     axios.get('/api/showcase')
       .then(({ data }) => {
         this.setState({
@@ -68,6 +74,10 @@ export default class Attraction extends React.Component {
     });
   }
 
+  updateLikeStatus() {
+
+  }
+
   render() {
     const {
       current, likeHover, form, clickImproved,
@@ -75,10 +85,11 @@ export default class Attraction extends React.Component {
     return (
       <>
         {current ? (
-          <div className="attraction">
+          <div className={css.attraction}>
             <Header
               current={current}
               updateHeartHover={this.updateHeartHover}
+              updateLikeStatus={this.updateLikeStatus}
               likeHover={likeHover}
             />
             <Overview
@@ -91,7 +102,7 @@ export default class Attraction extends React.Component {
             <Tickets current={current} />
             <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />
           </div>
-        ) : <div className="loading">Loading...</div>}
+        ) : <div className={css.loading}>Loading...</div>}
       </>
     );
   }
