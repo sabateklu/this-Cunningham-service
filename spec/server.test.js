@@ -16,8 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', showcase);
 
 describe('showcase Routes', () => {
-  afterAll(() => {
-    mongoose.connection.close();
+  afterAll(async () => {
+    await mongoose.connection.close();
   });
   test('/api/showcase GET route works', async (done) => {
     const response = await request(app).get('/api/showcase');
