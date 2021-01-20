@@ -33,8 +33,6 @@ describe('showcase Routes', () => {
   test('/api/showcase/:id GET route', async (done) => {
     const id = '6001f45dc6cc5d2005f7d2cd';
     request(app).get(`/api/showcase/${id}`)
-      // .set('Accept', 'application/json')
-      // .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
@@ -54,18 +52,23 @@ describe('showcase Routes', () => {
     done();
   });
   test('/api/showcase/like/:id PATCH route', async (done) => {
-    const firstResponse = await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
-      .send({ likedStatus: false });
+    request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
+      .send({ likedStatus: false })
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body.likedStatus).toBe(false);
+        return done();
+      });
 
-    expect(firstResponse.status).toBe(200);
-    expect(firstResponse.body.likedStatus).toBe(false);
-
-    const secondResponse = await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
-      .send({ likedStatus: true });
-
-    expect(secondResponse.status).toBe(200);
-    expect(secondResponse.body.likedStatus).toBe(true);
-    done();
+    request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
+      .send({ likedStatus: true })
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.body.likedStatus).toBe(true);
+        return done();
+      });
   });
   test('/api/showcase/like/:id PATCH should handle errors', async (done) => {
     await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
