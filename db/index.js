@@ -37,7 +37,7 @@ const improveFormSchema = new mongoose.Schema({
   address: String,
 });
 
-const Improve = mongoose.model('Improve', improveFormSchema);
+const Improve = mongoose.model('ImproveForm', improveFormSchema);
 
 module.exports.ShowCase = ShowCase;
 module.exports.Improve = Improve;
