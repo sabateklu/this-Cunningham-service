@@ -4,13 +4,13 @@ orbs:
 jobs:
   test:
     docker:
-      - image: circleci/node:14.4.0
+      - image: circleci/node:current
       - image: circleci/mongo:4.1.9
     steps:
       - checkout
       - run: npm install
       - run: npm run seed
-      - run: npm test
+      - run: npm run test
   lint:
     executor: node/default
     steps:
