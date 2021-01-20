@@ -32,16 +32,19 @@ describe('showcase Routes', () => {
   });
   test('/api/showcase/:id GET route', async (done) => {
     const id = '6001f45dc6cc5d2005f7d2cd';
-    const response = await request(app).get(`/api/showcase/${id}`)
+    request(app).get(`/api/showcase/${id}`)
+      .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(200);
-
-    expect(response.req.path).toBe('/api/showcase/6001f45dc6cc5d2005f7d2cd');
-    expect(response.headers['content-type']).toContain('json');
-    expect(response.body.overview.description).toBeTruthy();
-    expect(typeof response.body.overview).toEqual('object');
-    expect(Array.isArray(response.body.relativeRanking)).toBeTruthy();
-    done();
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.req.path).toBe('/api/showcase/6001f45dc6cc5d2005f7d2cd');
+        expect(res.headers['content-type']).toContain('json');
+        expect(res.body.overview.description).toBeTruthy();
+        expect(typeof res.body.overview).toEqual('object');
+        expect(Array.isArray(res.body.relativeRanking)).toBeTruthy();
+        return done();
+      });
   });
   test('/api/showcase/:id GET route bad request', async (done) => {
     const response = await request(app).get('/api/showcase/badID');
