@@ -37,7 +37,6 @@ describe('showcase Routes', () => {
       .end((err, res) => {
         if (err) return done(err);
         expect(res.req.path).toBe('/api/showcase/6001f45dc6cc5d2005f7d2cd');
-        expect(res.headers['content-type']).toContain('json');
         expect(res.body.overview.description).toBeTruthy();
         expect(typeof res.body.overview).toEqual('object');
         expect(Array.isArray(res.body.relativeRanking)).toBeTruthy();
