@@ -5,6 +5,7 @@ module.exports = {
     node: true,
     'jest/globals': true,
   },
+  allow: ['_id'],
   extends: [
     'plugin:react/recommended',
     'airbnb',

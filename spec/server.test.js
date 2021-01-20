@@ -39,37 +39,38 @@ describe('showcase Routes', () => {
     done();
   });
   test('/api/showcase/:id GET route', async (done) => {
-    const id = '6001f45dc6cc5d2005f7d2cd';
+    const response = await request(app).get('/api/showcase');
+    const id = response.body[0]._id;
     request(app).get(`/api/showcase/${id}`)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.req.path).toBe('/api/showcase/6001f45dc6cc5d2005f7d2cd');
-        expect(res.body.overview.description).toBeTruthy();
+        expect(res.req.path).toBe(`/api/showcase/${id}`);
+        expect(typeof res.body.overview.description).toEqual('string');
         expect(typeof res.body.overview).toEqual('object');
         expect(Array.isArray(res.body.relativeRanking)).toBeTruthy();
         return done();
       });
   });
-  test('/api/showcase/:id GET route bad request', async (done) => {
+  test('/api/showcase/:id GET route bad request', async () => {
     const response = await request(app).get('/api/showcase/badID');
 
     expect(response.status).toBe(400);
     expect('Error Getting by Id');
-    done();
   });
   test('/api/showcase/like/:id PATCH route', async () => {
-    const response = await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
-      .send({ likedStatus: false })
-    expect(response.status).toBe(200)
+    const initResponse = await request(app).get('/api/showcase');
+    const id = initResponse.body[0]._id;
+    const response = await request(app).patch(`/api/showcase/like/${id}`)
+      .send({ likedStatus: false });
+    expect(response.status).toBe(200);
     expect(response.body.likedStatus).toBe(false);
 
-
-    // const secondResponse = await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
-    //   .send({ likedStatus: true })
-    //   expect(secondResponse.body.likedStatus).toBe(true);
+    const secondResponse = await request(app).patch(`/api/showcase/like/${id}`)
+      .send({ likedStatus: true });
+    expect(secondResponse.body.likedStatus).toBe(true);
   });
-  test('/api/showcase/like/:id PATCH should handle errors', async (done) => {
+  test('/api/showcase/like/:id PATCH should handle errors', async () => {
     await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
       .send({ likedStatus: 'Breaking' })
       .expect(400)
@@ -79,6 +80,5 @@ describe('showcase Routes', () => {
       .send({ likedStatus: true })
       .expect(400)
       .expect('Error Patching liked status');
-    done();
   });
 });
