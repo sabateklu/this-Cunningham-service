@@ -14,24 +14,25 @@ showcase.get('/api/showcase', (req, res) => {
 
 showcase.get('/api/showcase/:id', (req, res) => {
   const { id } = req.params;
-  console.log(id);
   ShowCase.findById(id)
     .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      console.log('Error GETTING by ID', err);
-      res.status(400).send();
+    .catch(() => {
+      res.status(400).send('Error Getting by Id');
     });
 });
 
 showcase.patch('/api/showcase/like/:id', (req, res) => {
   const { id } = req.params;
   const { likedStatus } = req.body;
-  ShowCase.findByIdAndUpdate(id, { likedStatus: !likedStatus },
+  if (typeof likedStatus !== 'boolean') {
+    res.status(400).send('likedStatus must be a boolean');
+    return;
+  }
+  ShowCase.findByIdAndUpdate(id, { likedStatus },
     { new: true, useFindAndModify: false })
     .then((data) => res.status(200).send(data))
-    .catch((err) => {
-      console.log('Error PATCHING liked status', err);
-      res.status(400).send();
+    .catch(() => {
+      res.status(400).send('Error Patching liked status');
     });
 });
 

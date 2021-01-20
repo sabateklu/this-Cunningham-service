@@ -41,12 +41,31 @@ describe('showcase Routes', () => {
     done();
   });
   test('/api/showcase/:id GET route bad request', async (done) => {
-    const response = await request(app).get('/api/showcase/s');
+    const response = await request(app).get('/api/showcase/badID');
     expect(response.status).toBe(400);
+    expect('Error Getting by Id');
     done();
   });
   test('/api/showcase/like/:id PATCH route', async (done) => {
-
+    const firstResponse = await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
+      .send({ likedStatus: false })
+      .expect(200);
+    expect(firstResponse.body.likedStatus).toBeFalsy();
+    const secondResponse = await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
+      .send({ likedStatus: true })
+      .expect(200);
+    expect(secondResponse.body.likedStatus).toBeTruthy();
+    done();
+  });
+  test('/api/showcase/like/:id PATCH should handle errors', async (done) => {
+    await request(app).patch('/api/showcase/like/6001f45dc6cc5d2005f7d2cd')
+      .send({ likedStatus: 'Breaking' })
+      .expect(400)
+      .expect('likedStatus must be a boolean');
+    await request(app).patch('/api/showcase/like/break')
+      .send({ likedStatus: true })
+      .expect(400)
+      .expect('Error Patching liked status');
     done();
   });
 });
