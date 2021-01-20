@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from '../styles/images.module.css';
 
 export default class Images extends React.Component {
   constructor(props) {
@@ -48,15 +49,15 @@ export default class Images extends React.Component {
     const { travelersChoice, images } = this.props;
     const { displayedImage } = this.state;
     return (
-      <div className="images">
-        {travelersChoice ? <div className="award">Award</div> : null}
+      <div className={css.images}>
+        {travelersChoice ? <div className={css.award}>Award</div> : null}
         {images.length > 1 ? (
-          <div className="overlay">
-            <button type="button" className="next" onClick={() => this.changeImage('next')}>{'>'}</button>
-            <button type="button" className="prev" onClick={() => this.changeImage('prev')}>{'<'}</button>
+          <div className={css.overlay}>
+            <button type="button" className={css.next} onClick={() => this.changeImage('next')}>{'>'}</button>
+            <button type="button" className={css.prev} onClick={() => this.changeImage('prev')}>{'<'}</button>
           </div>
         ) : null}
-        <img src={displayedImage} alt="" className="image" />
+        <img src={displayedImage} alt="" className={css.image} />
       </div>
     );
   }
