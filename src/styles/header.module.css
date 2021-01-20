@@ -1,0 +1,31 @@
+.header {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  border: 1px solid black;
+  padding: 12.5px 25px;
+}
+
+.header-lg {
+
+}
+
+.reviews-like {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviews {
+  margin: 0;
+}
+
+.ranking-share {
+  display: flex;
+  justify-content: space-between;
+}
+.ranking {
+  margin: 0;
+}
+
+.type {
+
+}
