@@ -56,6 +56,7 @@ describe('showcase Routes', () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
+        expect(typeof res.body).toEqual('object')
         expect(res.body.likedStatus).toBe(false);
         return done();
       });
