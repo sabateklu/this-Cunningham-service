@@ -12,6 +12,9 @@ describe('<Overview />', () => {
     // app = shallow(<Attraction />);
     wrapper = mount(<Overview overview={data.overview} />);
   });
+  afterEach(() => {
+    wrapper.unmount();
+  });
   test('Open-closed status should change based on props', () => {
     const status = wrapper.find('.overview').find('.open-closed').find('strong');
     expect(status.text()).toEqual('Open Now:');
@@ -23,13 +26,11 @@ describe('<Overview />', () => {
       },
     });
     expect(status.text()).toEqual('Closed:');
-    wrapper.unmount();
   });
   test('Improve listing component should render', () => {
     expect(wrapper.find('.overview').containsMatchingElement(
       ImproveListing,
     )).toBe(true);
-    wrapper.unmount();
   });
   describe('<ImproveListing /> Form', () => {
     let improveListing;

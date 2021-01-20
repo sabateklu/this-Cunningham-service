@@ -19,9 +19,6 @@ const Header = ({ current, updateHeartHover, likeHover }) => (
     <p className="type">{current.attractionType}</p>
   </div>
 );
-// Header.defaultProps = {
-//   current: 'Loading Header',
-// };
 
 Header.propTypes = {
   current: PropTypes.shape({
