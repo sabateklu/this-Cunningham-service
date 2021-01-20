@@ -19,6 +19,9 @@ describe('showcase Routes', () => {
   afterAll(async () => {
     await mongoose.connection.close();
   });
+  test('connecting to mongoose test', () => {
+    expect(mongoose.connection.name).toBe('tripAdvisor');
+  });
   test('/api/showcase GET route works', async (done) => {
     const response = await request(app).get('/api/showcase');
 
@@ -56,7 +59,7 @@ describe('showcase Routes', () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-        expect(typeof res.body).toEqual('object')
+        console.log(res.body)
         expect(res.body.likedStatus).toBe(false);
         return done();
       });

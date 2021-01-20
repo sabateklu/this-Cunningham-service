@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run seed
-      - run: npm test
+      - run: npm run test
   lint:
     executor: node/default
     steps:
