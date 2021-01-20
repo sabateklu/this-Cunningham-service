@@ -40,7 +40,7 @@ describe('showcase Routes', () => {
   });
   test('/api/showcase/:id GET route', async (done) => {
     const response = await request(app).get('/api/showcase');
-    const id = response.body[0]._id;
+    const id = response.body[0]._id; /* eslint-disable-line */
     request(app).get(`/api/showcase/${id}`)
       .expect(200)
       .end((err, res) => {
