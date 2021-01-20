@@ -30,4 +30,14 @@ const showcaseSchema = new mongoose.Schema({
 
 const ShowCase = mongoose.model('Showcase', showcaseSchema);
 
+const improveFormSchema = new mongoose.Schema({
+  description: String,
+  isOpen: Boolean,
+  suggestedDuration: Number,
+  address: String,
+});
+
+const Improve = mongoose.model('Improve', improveFormSchema);
+
 module.exports.ShowCase = ShowCase;
+module.exports.Improve = Improve;
