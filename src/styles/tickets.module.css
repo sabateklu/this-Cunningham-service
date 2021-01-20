@@ -1,3 +1,8 @@
+h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
 .tickets {
   grid-row: 4/5;
   grid-column: 1/2;
