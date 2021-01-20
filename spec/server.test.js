@@ -10,10 +10,15 @@ const showcase = require('../server/showcase');
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+beforeAll(async () => {
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use('/', showcase);
 
-app.use('/', showcase);
+  await mongoose.connect('mongodb://localhost/tripAdvisor', {
+    useNewUrlParser: true, useUnifiedTopology: true,
+  });
+});
 
 describe('showcase Routes', () => {
   afterAll(async () => {
@@ -35,7 +40,7 @@ describe('showcase Routes', () => {
   });
   test('/api/showcase/:id GET route', async (done) => {
     const id = '6001f45dc6cc5d2005f7d2cd';
-    request(app).get(`/api/showcase/${id}`)
+    return request(app).get(`/api/showcase/${id}`)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
