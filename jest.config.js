@@ -15,7 +15,9 @@ module.exports = {
 
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'jsx'],
-
+  moduleNameMapper: {
+    '\\.(css|less|scss|sss|styl)$': '<rootDir>/node_modules/jest-css-modules',
+  },
   // setupFilesAfterEnv: ['jest-enzyme'], //points to npm package
   setupFilesAfterEnv: ['./enzyme.config.js'], // points to config file (both options work)
 

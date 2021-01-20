@@ -1,4 +1,8 @@
+/* @media screen and (max-width: 1000px) {
 
+} */
+/* @media screen and (min-width: 1001px) {
+} */
 .overview {
   grid-row: 3/4;
   grid-column: 1/2;
