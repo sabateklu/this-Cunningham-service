@@ -84,13 +84,6 @@ p.address {
   margin: 0;
 }
 
-.tickets {
-  grid-row: 4/5;
-  grid-column: 1/2;
-  border: 1px solid black;
-  padding: 12.5px 25px;
-}
-
 .images {
   position: relative;
   display: flex;

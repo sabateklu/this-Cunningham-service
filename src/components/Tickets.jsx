@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from '../styles/tickets.module.css';
 
 const Tickets = ({ current }) => (
-  <div className="tickets">
+  <div className={css.tickets}>
     <h3 className="ticket-header">
       {current.attractionTitle} Entrance Tickets
     </h3>
