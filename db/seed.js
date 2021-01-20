@@ -1,3 +1,4 @@
+/* eslint-disable func-names, no-console  */
 const mongoose = require('mongoose');
 const { ShowCase } = require('./index.js');
 
