@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { ShowCase } = require('../db/index.js');
 const showcase = require('./showcase');
 
 const app = express();

@@ -32,9 +32,10 @@ describe('showcase Routes', () => {
   });
   test('/api/showcase/:id GET route', async (done) => {
     const id = '6001f45dc6cc5d2005f7d2cd';
-    const response = await request(app).get(`/api/showcase/${id}`);
+    const response = await request(app).get(`/api/showcase/${id}`)
+      .expect('Content-Type', /json/)
+      .expect(200);
 
-    expect(response.status).toBe(200);
     expect(response.req.path).toBe('/api/showcase/6001f45dc6cc5d2005f7d2cd');
     expect(response.headers['content-type']).toContain('json');
     expect(response.body.overview.description).toBeTruthy();
