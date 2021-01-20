@@ -4,6 +4,7 @@ import Header from './Header';
 import Overview from './Overview';
 import Tickets from './Tickets';
 import Images from './Images';
+import css from '../styles/attraction.module.css';
 
 export default class Attraction extends React.Component {
   constructor(props) {
@@ -75,7 +76,7 @@ export default class Attraction extends React.Component {
     return (
       <>
         {current ? (
-          <div className="attraction">
+          <div className={css.attraction}>
             <Header
               current={current}
               updateHeartHover={this.updateHeartHover}
@@ -91,7 +92,7 @@ export default class Attraction extends React.Component {
             <Tickets current={current} />
             <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />
           </div>
-        ) : <div className="loading">Loading...</div>}
+        ) : <div className={css.loading}>Loading...</div>}
       </>
     );
   }

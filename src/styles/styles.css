@@ -8,12 +8,11 @@
 html, body {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-
 }
 
 p {
   margin: 0;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
 }
 
@@ -25,13 +24,6 @@ strong {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.attraction {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 55px 180px 250px 170px 30px;
-  max-width: 1230px;
 }
 
 .header {
