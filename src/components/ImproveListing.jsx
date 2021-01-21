@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Modal from './Modal';
 import css from '../styles/improveListing.module.css';
 
 const ImproveListing = ({
@@ -7,7 +8,7 @@ const ImproveListing = ({
 }) => (
   <div className={css.improveListing}>
     {clicked ? (
-      <>
+      <Modal>
         <form className={css.improve} onSubmit={(e) => submitImprovements(id, e)}>
           <input name="description" placeholder="description" type="text" value={form.description} onChange={handleFormChange} />
           <label htmlFor="duration">
@@ -27,7 +28,7 @@ const ImproveListing = ({
           <button type="submit">Submit</button>
         </form>
         <button type="button" onClick={openCloseForm}>Close</button>
-      </>
+      </Modal>
     ) : <button type="button" onClick={openCloseForm}>Improve This Listing</button>}
   </div>
 );
