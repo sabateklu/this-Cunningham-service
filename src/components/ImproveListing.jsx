@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import css from '../styles/improveListing.module.css';
 
 const ImproveListing = ({
-  clicked, form, handleFormChange, handleClick,
+  clicked, form, handleFormChange, handleClick, submitImprovements, id,
 }) => (
   <div className={css.improveListing}>
     {clicked ? (
       <>
-        <form className={css.improve} onSubmit={() => {}}>
+        <form className={css.improve} onSubmit={() => submitImprovements(id)}>
           <input name="description" placeholder="description" type="text" value={form.description} onChange={handleFormChange} />
           <label htmlFor="duration">
             How long will it take to experience this attraction?
@@ -42,6 +42,8 @@ ImproveListing.propTypes = {
   }),
   handleFormChange: PropTypes.func,
   handleClick: PropTypes.func,
+  submitImprovements: PropTypes.func,
+  id: PropTypes.string,
 };
 
 ImproveListing.defaultProps = {
@@ -51,6 +53,8 @@ ImproveListing.defaultProps = {
   },
   handleFormChange: () => {},
   handleClick: () => {},
+  submitImprovements: () => {},
+  id: 'Invalid',
 };
 
 export default ImproveListing;

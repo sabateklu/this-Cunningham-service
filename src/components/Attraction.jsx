@@ -23,6 +23,7 @@ export default class Attraction extends React.Component {
     this.updateHeartHover = this.updateHeartHover.bind(this);
     this.updateLikeStatus = this.updateLikeStatus.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
+    this.submitImprovements = this.submitImprovements.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -61,6 +62,15 @@ export default class Attraction extends React.Component {
         [e.target.name]: newValue,
       },
     });
+  }
+
+  submitImprovements(id) {
+    const { form } = this.state;
+    axios.post(`/api/showcase/${id}`, { form })
+      .then(({ data }) => {
+        console.log(data.message);
+      })
+      .catch((err) => console.log('error', err));
   }
 
   updateHeartHover() {
@@ -105,6 +115,8 @@ export default class Attraction extends React.Component {
               clicked={clickImproved}
               handleClick={this.handleClick}
               handleFormChange={this.handleFormChange}
+              submitImprovements={this.submitImprovements}
+              id={current._id} /* eslint-disable-line no-underscore-dangle */
             />
             <Tickets current={current} />
             <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />
