@@ -24,7 +24,7 @@ export default class Attraction extends React.Component {
     this.updateLikeStatus = this.updateLikeStatus.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.submitImprovements = this.submitImprovements.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.openCloseForm = this.openCloseForm.bind(this);
   }
 
   componentDidMount() {
@@ -36,12 +36,6 @@ export default class Attraction extends React.Component {
       }).catch((err) => console.log('error GETTING all', err));
   }
 
-  handleClick() {
-    const { clickImproved } = this.state;
-    this.setState({
-      clickImproved: !clickImproved,
-    });
-  }
 
   handleFormChange(e) {
     const { form } = this.state;
@@ -61,6 +55,14 @@ export default class Attraction extends React.Component {
         ...form,
         [e.target.name]: newValue,
       },
+    });
+  }
+
+  // terrible name, this is for Improvement form
+  openCloseForm() {
+    const { clickImproved } = this.state;
+    this.setState({
+      clickImproved: !clickImproved,
     });
   }
 
@@ -113,7 +115,7 @@ export default class Attraction extends React.Component {
               overview={current.overview}
               form={form}
               clicked={clickImproved}
-              handleClick={this.handleClick}
+              openCloseForm={this.openCloseForm}
               handleFormChange={this.handleFormChange}
               submitImprovements={this.submitImprovements}
               id={current._id} /* eslint-disable-line no-underscore-dangle */

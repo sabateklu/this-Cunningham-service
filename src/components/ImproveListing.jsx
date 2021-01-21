@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import css from '../styles/improveListing.module.css';
 
 const ImproveListing = ({
-  clicked, form, handleFormChange, handleClick, submitImprovements, id,
+  clicked, form, handleFormChange, openCloseForm, submitImprovements, id,
 }) => (
   <div className={css.improveListing}>
     {clicked ? (
@@ -26,9 +26,9 @@ const ImproveListing = ({
           <input name="address" type="text" onChange={handleFormChange} value={form.address} />
           <button type="submit">Submit</button>
         </form>
-        <button type="button" onClick={handleClick}>Close</button>
+        <button type="button" onClick={openCloseForm}>Close</button>
       </>
-    ) : <button type="button" onClick={handleClick}>Improve This Listing</button>}
+    ) : <button type="button" onClick={openCloseForm}>Improve This Listing</button>}
   </div>
 );
 
@@ -41,7 +41,7 @@ ImproveListing.propTypes = {
     address: PropTypes.string,
   }),
   handleFormChange: PropTypes.func,
-  handleClick: PropTypes.func,
+  openCloseForm: PropTypes.func,
   submitImprovements: PropTypes.func,
   id: PropTypes.string,
 };
@@ -52,7 +52,7 @@ ImproveListing.defaultProps = {
     description: '',
   },
   handleFormChange: () => {},
-  handleClick: () => {},
+  openCloseForm: () => {},
   submitImprovements: () => {},
   id: 'Invalid',
 };
