@@ -34,3 +34,11 @@ h3 {
 .type {
 
 }
+
+.icon {
+
+}
+
+.icon:hover {
+  cursor: pointer;
+}

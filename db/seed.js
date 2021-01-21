@@ -1,3 +1,4 @@
+/* eslint-disable func-names, no-console  */
 const mongoose = require('mongoose');
 const { ShowCase } = require('./index.js');
 
@@ -72,7 +73,7 @@ const addresses = [
   'Jaya 46050 Malaysia',
   'Petaling Jaya, Selangor, 46050',
   '23 Tingkat Daruzzakah Lorong Haji Hussein Off Jalan Raja, 50007',
-  'Muda Wilayah Persekutuan 50676 Malaysia 50676',
+  'Muda Wilayah Persekutuan, Malaysia 50676',
   'Kuala Lumpur, Wilayah Persekutuan, 50676',
   'Jalan Perpaduan, Kampung Air, 88000',
 ];
@@ -103,7 +104,7 @@ class Attraction {
   constructor(id) {
     this.attractionTitle = randomGenerator(null, attractionTitles);
     this.city = randomGenerator(null, cities);
-    this.relativeRanking = [randomGenerator(0, 17), randomGenerator(17, 100)];
+    this.relativeRanking = [randomGenerator(1, 34), randomGenerator(35, 101)];
     this.ratio = this.relativeRanking[0] / this.relativeRanking[1];
     this.attractionType = randomGenerator(null, attractionTypes);
     this.reviews = randomGenerator(0, 3000);
@@ -117,6 +118,7 @@ class Attraction {
     this.travelersChoiceAward = randomGenerator(null, bools);
     this.likedStatus = randomGenerator(null, bools);
     this.ticketPrice = randomGenerator(0, 500);
+    this.averageRating = randomGenerator(5, 25) / 5;
   }
 }
 
