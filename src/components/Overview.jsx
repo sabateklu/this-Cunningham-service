@@ -10,10 +10,12 @@ const Overview = ({
     <h4 className={css['overview-header']}>Overview</h4>
     <p className={css.description}>{overview.description}</p>
     <p className={css['open-closed']}><strong>{overview.isOpen ? 'Open Now' : 'Closed'}:</strong> Hours Here</p>
-    <p className={css.duration}>Suggested Duration: {overview.suggestedDuration} minutes</p>
+    <p className={css.duration}>
+      <strong>Suggested Duration: </strong>{overview.suggestedDuration} minutes
+    </p>
     <div className={css['address-container']}>
-      <div className={css.address}>Address:</div>
-      <p className={css.address}>{overview.address}</p>
+      <div className={css.address}><strong>Address: </strong></div>
+      <p className={css.address}> {overview.address}</p>
     </div>
     <ImproveListing
       form={form}

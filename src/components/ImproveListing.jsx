@@ -32,7 +32,7 @@ const ImproveListing = ({
           </div>
         </form>
       </Modal>
-    ) : <button type="button" onClick={openCloseForm}>Improve This Listing</button>}
+    ) : <button type="button" className={css.openFormBtn} onClick={openCloseForm}>Improve This Listing</button>}
   </div>
 );
 

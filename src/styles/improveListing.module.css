@@ -3,8 +3,11 @@
 } */
 /* @media screen and (min-width: 1001px) {
 } */
-.improveListing {
-
+.openFormBtn {
+  border: none;
+  background: rgba(255, 0, 0, 0);
+  cursor: pointer;
+  padding: 0;
 }
 
 h2 {
@@ -16,10 +19,6 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-}
-
-.formHeader {
-
 }
 
 .improve label {
@@ -58,5 +57,4 @@ h2 {
   background-color: rgb(0, 170, 100);
   color: rgb(255, 255, 255);
   transition: .5s;
-
 }
