@@ -8,7 +8,7 @@ const Header = ({
   current, updateHeartHover, likeHover, updateLikeStatus,
 }) => (
   <div className={css.header}>
-    <h3 className={css['header-lg']}>{current.attractionTitle}</h3>
+    <h1 className={css['header-lg']}>{current.attractionTitle}</h1>
     <div className={css['reviews-like']}>
       <p className={css.reviews}>{current.reviews} Reviews </p>
       <div className={css.icon}>
@@ -21,7 +21,7 @@ const Header = ({
       <p className={css.ranking}>
         #{current.relativeRanking[0]} of {current.relativeRanking[1]} things to do in {current.city}
       </p>
-      <FiShare size={25} />
+      <FiShare size={20} />
     </div>
     <p className={css.type}>{current.attractionType}</p>
   </div>
