@@ -25,6 +25,7 @@ const showcaseSchema = new mongoose.Schema({
   travelersChoiceAward: Boolean,
   likedStatus: Boolean,
   ticketPrice: Number,
+  averageRating: Number,
   // availability: Date (Stretch goal)
 });
 
