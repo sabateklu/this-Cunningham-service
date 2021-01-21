@@ -36,7 +36,6 @@ export default class Attraction extends React.Component {
       }).catch((err) => console.log('error GETTING all', err));
   }
 
-
   handleFormChange(e) {
     const { form } = this.state;
     // must copy new value, cannot modify e.target.value directly
@@ -58,11 +57,21 @@ export default class Attraction extends React.Component {
     });
   }
 
-  // terrible name, this is for Improvement form
   openCloseForm() {
-    const { clickImproved } = this.state;
+    const { clickImproved, form, current } = this.state;
+    const {
+      description, address, isOpen, suggestedDuration,
+    } = current.overview;
+
     this.setState({
       clickImproved: !clickImproved,
+      form: {
+        ...form,
+        description,
+        address,
+        isOpen,
+        suggestedDuration,
+      },
     });
   }
 
