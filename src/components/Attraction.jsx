@@ -83,6 +83,7 @@ export default class Attraction extends React.Component {
     } else {
       axios.post(`/api/showcase/${id}`, { form })
         .then(({ data }) => {
+          this.openCloseForm();
           console.log(data.message);
         })
         .catch((err) => console.log('error', err));
