@@ -18,6 +18,9 @@ h3 {
 }
 
 .reviews-like {
+}
+
+.reviews-like {
   display: flex;
   justify-content: space-between;
 }
@@ -32,14 +35,6 @@ h3 {
 }
 .ranking {
   margin: 0;
-}
-
-.type {
-
-}
-
-.icon {
-
 }
 
 .icon:hover {
