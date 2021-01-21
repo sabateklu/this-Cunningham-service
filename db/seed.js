@@ -118,7 +118,7 @@ class Attraction {
     this.travelersChoiceAward = randomGenerator(null, bools);
     this.likedStatus = randomGenerator(null, bools);
     this.ticketPrice = randomGenerator(0, 500);
-    this.averageRating = randomGenerator(5, 25) / 5;
+    this.averageRating = randomGenerator(0, 25) / 5;
   }
 }
 

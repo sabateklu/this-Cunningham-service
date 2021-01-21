@@ -24,7 +24,7 @@ const Header = ({
   <div className={css.header}>
     <h1 className={css['header-lg']}>{current.attractionTitle}</h1>
     <div className={css['reviews-like']}>
-      <p className={css.reviews}>{current.reviews} Reviews </p>
+      <img className={css.bubbles} src={bubbles(current.averageRating)} alt="bubble ratings" /><p className={css.reviews}>{current.reviews} Reviews </p>
       <div className={css.icon}>
         {current.likedStatus ? (
           <FaHeart color="red" size={20} onClick={() => updateLikeStatus(current._id)} onMouseEnter={updateHeartHover} onMouseLeave={updateHeartHover} />/* eslint-disable-line no-underscore-dangle */
@@ -50,6 +50,7 @@ Header.propTypes = {
     attractionType: PropTypes.string,
     _id: PropTypes.string,
     likedStatus: PropTypes.bool,
+    averageRating: PropTypes.number,
   }).isRequired,
   updateHeartHover: PropTypes.func,
   likeHover: PropTypes.bool,
