@@ -3,11 +3,16 @@
 } */
 /* @media screen and (min-width: 1001px) {
 } */
+
 .openFormBtn {
   border: none;
   background: rgba(255, 0, 0, 0);
   cursor: pointer;
-  padding: 0;
+  padding-bottom: 2px;
+  padding-left: 0;
+  width: 100%;
+  text-align: start;
+  border-bottom: dotted 1.5px #e4d0c8;
 }
 
 h2 {
