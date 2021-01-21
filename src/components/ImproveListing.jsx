@@ -26,8 +26,8 @@ const ImproveListing = ({
             <input name="address" type="text" onChange={handleFormChange} value={form.address} />
             <br />
             <div className={css.btnFlex}>
-              <button type="button" onClick={openCloseForm}>Close</button>
               <button type="submit">Submit</button>
+              <button type="button" onClick={openCloseForm}>Close</button>
             </div>
           </div>
         </form>
