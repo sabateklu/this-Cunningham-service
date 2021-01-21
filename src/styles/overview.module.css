@@ -19,12 +19,37 @@ h4 {
   font-weight: 500;
 }
 
+.clock {
+  display: flex;
+  align-items: center;
+}
+.clock p {
+  margin-left: 6px;
+}
+
+.time {
+display: flex;
+align-items: center;
+}
+.timeIcon {
+  margin-left: -2px;
+  margin-right: 4px;
+}
+.addressWithIcon {
+  display: flex;
+  align-items: center;
+}
+.addressIcon {
+  margin-left: -2px;
+  margin-right: 4px;
+}
 .address-container {
   display: flex;
 }
 
 .address {
   font-size: 13px;
+  margin-right: 3px;
 }
 
 p.address {
