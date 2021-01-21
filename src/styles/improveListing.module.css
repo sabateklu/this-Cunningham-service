@@ -7,10 +7,56 @@
 
 }
 
-.improve {
+h2 {
+  font-weight: 400;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.formHeader {
 
 }
 
-input {
+.improve label {
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.improve input {
+  margin: 0px;
+  border: 1px solid black;
+  padding: 7px 10px;
+  border-radius: 3px;
+  border: 1px solid rgb(0, 170, 100);
+}
+
+.improve input[type=text] {
+  width: 90%;
+}
+
+.btnFlex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnFlex button {
+  width: 80%;
+  height: 36px;
+  letter-spacing: 2px;
+  border: 2px solid rgb(0, 170, 100);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btnFlex button:hover {
+  background-color: rgb(0, 170, 100);
+  color: rgb(255, 255, 255);
+  transition: .5s;
 
 }
