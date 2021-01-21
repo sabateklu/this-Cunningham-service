@@ -21,7 +21,7 @@
 .award {
   position: absolute;
   left: 40px;
-  top: 1em;
+  top: .95em;
   height: 15%;
   z-index: 500;
 }
