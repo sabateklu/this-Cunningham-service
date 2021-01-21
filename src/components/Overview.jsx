@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaRegClock } from 'react-icons/fa';
+import { CgSandClock } from 'react-icons/cg';
 import ImproveListing from './ImproveListing';
 import css from '../styles/overview.module.css';
 
