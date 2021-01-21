@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
-const { ShowCase } = require('../db/index.js');
+const { ShowCase, postForm } = require('../db/index.js');
 
 const showcase = express.Router();
 
@@ -20,6 +20,14 @@ showcase.get('/api/showcase/:id', (req, res) => {
     .catch(() => {
       res.status(400).send('Error Getting by Id');
     });
+});
+
+showcase.post('/api/showcase/', (req, res) => {
+  const { form } = req.body;
+  postForm(form, (err, data) => {
+    if (err) res.status(406).send(err.message);
+    else res.status(201).send(data);
+  });
 });
 
 showcase.patch('/api/showcase/like/:id', (req, res) => {

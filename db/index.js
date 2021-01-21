@@ -30,14 +30,35 @@ const showcaseSchema = new mongoose.Schema({
 
 const ShowCase = mongoose.model('Showcase', showcaseSchema);
 
+// form schema
 const improveFormSchema = new mongoose.Schema({
-  description: String,
-  isOpen: Boolean,
-  suggestedDuration: Number,
-  address: String,
+  description: {
+    type: String,
+    required: true,
+  },
+  isOpen: {
+    type: Boolean,
+    required: true,
+  },
+  suggestedDuration: {
+    type: Number,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
 });
 
-const Improve = mongoose.model('ImproveForm', improveFormSchema);
+const ImproveForm = mongoose.model('ImproveForm', improveFormSchema);
+
+// POST form to db //
+const postForm = (object, cb) => {
+  const form = new ImproveForm(object);
+  form.save()
+    .then((data) => cb(null, data))
+    .catch((err) => cb(err, null));
+};
 
 module.exports.ShowCase = ShowCase;
-module.exports.Improve = Improve;
+module.exports.postForm = postForm;
