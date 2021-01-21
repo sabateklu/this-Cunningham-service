@@ -8,7 +8,7 @@ const ImproveListing = ({
   <div className={css.improveListing}>
     {clicked ? (
       <>
-        <form className={css.improve} onSubmit={() => submitImprovements(id)}>
+        <form className={css.improve} onSubmit={(e) => submitImprovements(id, e)}>
           <input name="description" placeholder="description" type="text" value={form.description} onChange={handleFormChange} />
           <label htmlFor="duration">
             How long will it take to experience this attraction?

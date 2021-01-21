@@ -75,13 +75,18 @@ export default class Attraction extends React.Component {
     });
   }
 
-  submitImprovements(id) {
-    const { form } = this.state;
-    axios.post(`/api/showcase/${id}`, { form })
-      .then(({ data }) => {
-        console.log(data.message);
-      })
-      .catch((err) => console.log('error', err));
+  submitImprovements(id, e) {
+    e.preventDefault();
+    const { form, current } = this.state;
+    if (JSON.stringify(form) === JSON.stringify(current.overview)) {
+      console.log('Must Submit Improvements to Current Attraction Listing');
+    } else {
+      axios.post(`/api/showcase/${id}`, { form })
+        .then(({ data }) => {
+          console.log(data.message);
+        })
+        .catch((err) => console.log('error', err));
+    }
   }
 
   updateHeartHover() {
