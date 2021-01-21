@@ -4,11 +4,15 @@ import css from '../styles/tickets.module.css';
 
 const Tickets = ({ current }) => (
   <div className={css.tickets}>
-    <h3 className={css['ticket-header']}>
-      {current.attractionTitle} Entrance Tickets
-    </h3>
-    <span className={css['ticket-price']}>from ${current.ticketPrice}</span>
-    <button className={css['get-tix-btn']} type="button">Check Availability</button>
+    <div className={css.ticketContainer}>
+      <div className={css.ticketTitle}>
+        <h3 className={css['ticket-header']}>
+          {current.attractionTitle} Entrance Tickets
+        </h3>
+        <span className={css['ticket-price']}>from ${current.ticketPrice}</span>
+      </div>
+      <button className={css['get-tix-btn']} type="button">Check Availability</button>
+    </div>
   </div>
 );
 

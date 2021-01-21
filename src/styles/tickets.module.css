@@ -13,6 +13,20 @@ h3 {
   border-bottom-right-radius: 7px;
 }
 
+.ticketContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(194, 171, 158, 0.747);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.ticketTitle {
+  display: flex;
+}
+
 .ticket-header {
 
 }
@@ -22,5 +36,10 @@ h3 {
 }
 
 .get-tix-btn {
-
+  width: 100%;
+  background-color: #F2B203;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
 }
