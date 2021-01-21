@@ -2,6 +2,8 @@
 .images {
   position: relative;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   grid-row: 2/5;
   grid-column: 2/3;
   border: 1px solid black;
@@ -9,6 +11,18 @@
 
 .image {
   transition: .8s;
+  width: 100%;
+  height: 95%;
+  object-fit: cover;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.award {
+  position: absolute;
+  left: 40px;
+  top: 1em;
+  height: 15%;
 }
 
 .images:hover .overlay {
@@ -64,14 +78,4 @@
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   font-size: 30px;
-}
-
-.award {
-  position: absolute;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }

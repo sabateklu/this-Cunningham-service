@@ -50,7 +50,7 @@ export default class Images extends React.Component {
     const { displayedImage } = this.state;
     return (
       <div className={css.images}>
-        {travelersChoice ? <div className={css.award}>Award</div> : null}
+        {travelersChoice ? <img className={css.award} src="http://www.tripadvisor.com/img/cdsi/img2/awards/TC_2019_downloadable_L_R-40840-5.jpg" alt="Trip advisor award logo" /> : null}
         {images.length > 1 ? (
           <div className={css.overlay}>
             <button type="button" className={css.next} onClick={() => this.changeImage('next')}>{'>'}</button>
