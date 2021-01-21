@@ -32,6 +32,10 @@ const ShowCase = mongoose.model('Showcase', showcaseSchema);
 
 // form schema
 const improveFormSchema = new mongoose.Schema({
+  attractionId: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,

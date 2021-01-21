@@ -15,6 +15,7 @@ showcase.get('/api/showcase', (req, res) => {
 
 showcase.get('/api/showcase/:id', (req, res) => {
   const { id } = req.params;
+
   ShowCase.findById(id)
     .then((data) => res.status(200).send(data))
     .catch(() => {
@@ -22,11 +23,18 @@ showcase.get('/api/showcase/:id', (req, res) => {
     });
 });
 
-showcase.post('/api/showcase/', (req, res) => {
+showcase.post('/api/showcase/:attractionId', (req, res) => {
   const { form } = req.body;
-  postForm(form, (err, data) => {
+  const { attractionId } = req.params;
+  const obj = { ...form, attractionId };
+
+  postForm(obj, (err) => {
     if (err) res.status(406).send(err.message);
-    else res.status(201).send(data);
+    else {
+      res.status(201).send({
+        message: 'Thank You! Your suggestions have been received.  We will look into this and make changes as appropriate',
+      });
+    }
   });
 });
 
