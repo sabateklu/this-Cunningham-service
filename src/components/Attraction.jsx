@@ -23,7 +23,8 @@ export default class Attraction extends React.Component {
     this.updateHeartHover = this.updateHeartHover.bind(this);
     this.updateLikeStatus = this.updateLikeStatus.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.submitImprovements = this.submitImprovements.bind(this);
+    this.openCloseForm = this.openCloseForm.bind(this);
   }
 
   componentDidMount() {
@@ -33,13 +34,6 @@ export default class Attraction extends React.Component {
           current: data[1],
         });
       }).catch((err) => console.log('error GETTING all', err));
-  }
-
-  handleClick() {
-    const { clickImproved } = this.state;
-    this.setState({
-      clickImproved: !clickImproved,
-    });
   }
 
   handleFormChange(e) {
@@ -61,6 +55,39 @@ export default class Attraction extends React.Component {
         [e.target.name]: newValue,
       },
     });
+  }
+
+  openCloseForm() {
+    const { clickImproved, form, current } = this.state;
+    const {
+      description, address, isOpen, suggestedDuration,
+    } = current.overview;
+
+    this.setState({
+      clickImproved: !clickImproved,
+      form: {
+        ...form,
+        description,
+        address,
+        isOpen,
+        suggestedDuration,
+      },
+    });
+  }
+
+  submitImprovements(id, e) {
+    e.preventDefault();
+    const { form, current } = this.state;
+    if (JSON.stringify(form) === JSON.stringify(current.overview)) {
+      console.log('Must Submit Improvements to Current Attraction Listing');
+    } else {
+      axios.post(`/api/showcase/${id}`, { form })
+        .then(({ data }) => {
+          this.openCloseForm();
+          console.log(data.message);
+        })
+        .catch((err) => console.log('error', err));
+    }
   }
 
   updateHeartHover() {
@@ -103,8 +130,10 @@ export default class Attraction extends React.Component {
               overview={current.overview}
               form={form}
               clicked={clickImproved}
-              handleClick={this.handleClick}
+              openCloseForm={this.openCloseForm}
               handleFormChange={this.handleFormChange}
+              submitImprovements={this.submitImprovements}
+              id={current._id} /* eslint-disable-line no-underscore-dangle */
             />
             <Tickets current={current} />
             <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />

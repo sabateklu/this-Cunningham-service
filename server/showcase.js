@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
-const { ShowCase } = require('../db/index.js');
+const { ShowCase, postForm } = require('../db/index.js');
 
 const showcase = express.Router();
 
@@ -15,11 +15,27 @@ showcase.get('/api/showcase', (req, res) => {
 
 showcase.get('/api/showcase/:id', (req, res) => {
   const { id } = req.params;
+
   ShowCase.findById(id)
     .then((data) => res.status(200).send(data))
     .catch(() => {
       res.status(400).send('Error Getting by Id');
     });
+});
+
+showcase.post('/api/showcase/:attractionId', (req, res) => {
+  const { form } = req.body;
+  const { attractionId } = req.params;
+  const obj = { ...form, attractionId };
+
+  postForm(obj, (err) => {
+    if (err) res.status(406).send(err.message);
+    else {
+      res.status(201).send({
+        message: 'Thank You! Your suggestions have been received.  We will look into this and make changes as appropriate',
+      });
+    }
+  });
 });
 
 showcase.patch('/api/showcase/like/:id', (req, res) => {

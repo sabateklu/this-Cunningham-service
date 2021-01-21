@@ -4,7 +4,7 @@ import ImproveListing from './ImproveListing';
 import css from '../styles/overview.module.css';
 
 const Overview = ({
-  overview, form, handleFormChange, clicked, handleClick,
+  overview, form, handleFormChange, clicked, openCloseForm, submitImprovements, id,
 }) => (
   <div className={css.overview}>
     <h4 className={css['overview-header']}>Overview</h4>
@@ -19,7 +19,9 @@ const Overview = ({
       form={form}
       handleFormChange={handleFormChange}
       clicked={clicked}
-      handleClick={handleClick}
+      openCloseForm={openCloseForm}
+      submitImprovements={submitImprovements}
+      id={id}
     />
   </div>
 );
@@ -39,7 +41,9 @@ Overview.propTypes = {
   }),
   handleFormChange: PropTypes.func,
   clicked: PropTypes.bool,
-  handleClick: PropTypes.func,
+  openCloseForm: PropTypes.func,
+  submitImprovements: PropTypes.func,
+  id: PropTypes.string,
 };
 
 Overview.defaultProps = {
@@ -47,8 +51,10 @@ Overview.defaultProps = {
     description: '',
   },
   handleFormChange: () => {},
-  handleClick: () => {},
+  openCloseForm: () => {},
+  submitImprovements: () => {},
   clicked: false,
+  id: 'Invalid',
 };
 
 export default Overview;
