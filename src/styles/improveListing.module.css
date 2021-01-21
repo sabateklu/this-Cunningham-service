@@ -42,7 +42,8 @@ h2 {
   border: 1px solid black;
   padding: 7px 10px;
   border-radius: 3px;
-  border: 1px solid rgb(0, 170, 100);
+  border: 2px solid rgba(192, 182, 175, 0.479);
+  background-color: rgb(255, 255, 255);
 }
 
 .improve input[type=text] {
