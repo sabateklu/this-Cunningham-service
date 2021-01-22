@@ -8,3 +8,6 @@ images
 /coverage/
 
 /public/bundle.js
+
+# production files
+dist
