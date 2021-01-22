@@ -10,6 +10,7 @@
     "seed": "node db/seed.js",
     "start": "nodemon server",
     "build": "npx webpack --config webpack.config.js --watch",
+    "build:prod": "npx webpack --config webpack.prod.js",
     "hot": "webpack serve --open",
     "lint": "./node_modules/.bin/eslint . --ignore-path ./.eslintignore"
   },
@@ -25,8 +26,12 @@
   "homepage": "https://github.com/Slack-Reactor/this-Cunningham-service#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-minimizer-webpack-plugin": "^1.2.0",
     "express": "^4.17.1",
+    "html-webpack-plugin": "^4.5.1",
     "jest-css-modules": "^2.1.0",
+    "mini-css-extract-plugin": "^1.3.4",
     "mongoose": "^5.11.11",
     "nodemon": "^2.0.7",
     "prop-types": "^15.7.2",
