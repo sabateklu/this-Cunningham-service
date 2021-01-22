@@ -4,13 +4,27 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { FiShare } from 'react-icons/fi';
 import css from '../styles/header.module.css';
 
+const bubbles = function (rating) {
+  if (typeof rating !== 'number') {
+    return;
+  }
+  function roundHalf(num) {
+    return (Math.floor(num * 2) / 2).toFixed(1);
+  }
+  const modifiedRating = roundHalf(rating);
+  if (Number(modifiedRating) <= 5.0) {
+    return `http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/s${modifiedRating}-MCID-5.svg`; /* eslint-disable-line consistent-return */
+  }
+  return null; /* eslint-disable-line consistent-return */
+};
+
 const Header = ({
   current, updateHeartHover, likeHover, updateLikeStatus,
 }) => (
   <div className={css.header}>
-    <h3 className={css['header-lg']}>{current.attractionTitle}</h3>
+    <h1 className={css['header-lg']}>{current.attractionTitle}</h1>
     <div className={css['reviews-like']}>
-      <p className={css.reviews}>{current.reviews} Reviews </p>
+      <img className={css.bubbles} src={bubbles(current.averageRating)} alt="bubble ratings" /><p className={css.reviews}>{current.reviews} Reviews </p>
       <div className={css.icon}>
         {current.likedStatus ? (
           <FaHeart color="red" size={20} onClick={() => updateLikeStatus(current._id)} onMouseEnter={updateHeartHover} onMouseLeave={updateHeartHover} />/* eslint-disable-line no-underscore-dangle */
@@ -21,7 +35,7 @@ const Header = ({
       <p className={css.ranking}>
         #{current.relativeRanking[0]} of {current.relativeRanking[1]} things to do in {current.city}
       </p>
-      <FiShare size={25} />
+      <FiShare size={20} />
     </div>
     <p className={css.type}>{current.attractionType}</p>
   </div>
@@ -36,6 +50,7 @@ Header.propTypes = {
     attractionType: PropTypes.string,
     _id: PropTypes.string,
     likedStatus: PropTypes.bool,
+    averageRating: PropTypes.number,
   }).isRequired,
   updateHeartHover: PropTypes.func,
   likeHover: PropTypes.bool,

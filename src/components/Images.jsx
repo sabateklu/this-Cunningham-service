@@ -10,8 +10,10 @@ export default class Images extends React.Component {
       attractionImages: [],
       displayedImage: '',
       index: 0,
+      showAwardToolTip: false,
     };
     this.changeImage = this.changeImage.bind(this);
+    this.toggleTooltip = this.toggleTooltip.bind(this);
   }
 
   componentDidMount() {
@@ -45,12 +47,31 @@ export default class Images extends React.Component {
     }
   }
 
+  toggleTooltip() {
+    const { showAwardToolTip } = this.state;
+    this.setState({
+      showAwardToolTip: !showAwardToolTip,
+    });
+  }
+
   render() {
     const { travelersChoice, images } = this.props;
-    const { displayedImage } = this.state;
+    const { displayedImage, showAwardToolTip } = this.state;
     return (
       <div className={css.images}>
-        {travelersChoice ? <div className={css.award}>Award</div> : null}
+        {travelersChoice && (
+          <img className={css.award} src="http://www.tripadvisor.com/img/cdsi/img2/awards/TC_2019_downloadable_L_R-40840-5.jpg" alt="Trip advisor award logo" onMouseEnter={this.toggleTooltip} onMouseLeave={this.toggleTooltip} />
+        )}
+        {showAwardToolTip && (
+          <div className={css.tooltip}>
+            <h3>What is Travelers’ Choice?</h3>
+            <p>
+              Tripadvisor gives a Travelers’ Choice award to accommodations, attractions and
+              restaurants that consistently earn great reviews from travelers and are ranked
+              within the top 10% of properties on Tripadvisor.
+            </p>
+          </div>
+        )}
         {images.length > 1 ? (
           <div className={css.overlay}>
             <button type="button" className={css.next} onClick={() => this.changeImage('next')}>{'>'}</button>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TiPencil } from 'react-icons/ti';
 import Modal from './Modal';
 import css from '../styles/improveListing.module.css';
 
@@ -26,13 +27,13 @@ const ImproveListing = ({
             <input name="address" type="text" onChange={handleFormChange} value={form.address} />
             <br />
             <div className={css.btnFlex}>
-              <button type="button" onClick={openCloseForm}>Close</button>
               <button type="submit">Submit</button>
+              <button type="button" onClick={openCloseForm}>Close</button>
             </div>
           </div>
         </form>
       </Modal>
-    ) : <button type="button" onClick={openCloseForm}>Improve This Listing</button>}
+    ) : <div className={css.pencilForm}><TiPencil className={css.pencil} size={23} /><button type="button" className={css.openFormBtn} onClick={openCloseForm}>Improve This Listing</button></div>}
   </div>
 );
 

@@ -8,17 +8,18 @@
 html, body {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: rgb(250, 241, 237);
+  background-color: #f9f2ea;
+  color: rgba(36, 36, 36, 0.884);
 }
 
 p {
   margin: 0;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 300;
 }
 
 strong {
-  font-weight: 500;
+  font-weight: 450;
 }
 
 #app {

@@ -12,7 +12,7 @@ describe('<Images />', () => {
     // images.unmount();
   });
   test('Images should render an image initially', () => {
-    expect(images.find('img').props().src).toBeDefined();
+    expect(images.find('.image').props().src).toBeDefined();
   });
   test('Images should have an overlay', () => {
     expect(images.find('.overlay')).toHaveLength(1);
