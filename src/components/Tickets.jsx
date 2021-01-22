@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { GrTicket } from 'react-icons/gr';
 import css from '../styles/tickets.module.css';
 
 const Tickets = ({ current }) => (
   <div className={css.tickets}>
     <div className={css.ticketContainer}>
       <div className={css.ticketTitle}>
-        <h3 className={css['ticket-header']}>
-          {current.attractionTitle} Entrance Tickets
-        </h3>
+        <div className={css.withIcon}>
+          <GrTicket className={css.ticketIcon} size={25} />
+          <h3 className={css['ticket-header']}>
+            {current.attractionTitle} Entrance Tickets
+          </h3>
+        </div>
         <div className={css.price}>
           <div>
             <span className={css['ticket-price']}>from </span>

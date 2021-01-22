@@ -22,6 +22,15 @@
   display: flex;
 }
 
+.withIcon {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ticketIcon {
+  margin-right: 5px;
+}
+
 .ticket-header {
   font-size: 16px;
   font-weight: 600;
