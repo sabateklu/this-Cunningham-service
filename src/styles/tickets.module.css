@@ -1,13 +1,8 @@
-h3 {
-  margin: 0;
-  font-weight: 500;
-}
-
 .tickets {
   grid-row: 4/5;
   grid-column: 1/2;
   border: 1px solid black;
-  padding: 12.5px 25px;
+  padding: 0 27px;
   background-color: rgb(255, 255, 255);
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
@@ -18,7 +13,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(194, 171, 158, 0.747);
+  border: 1px solid #e4d0c8;
   border-radius: 5px;
   padding: 20px;
 }
@@ -28,18 +23,40 @@ h3 {
 }
 
 .ticket-header {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px;
+  margin: 0 0 10px 0;
+}
 
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .ticket-price {
+  font-size: 10px;
+}
 
+.ticket-price strong {
+  font-weight: 700;
+  font-size:40px;
 }
 
 .get-tix-btn {
+  cursor: pointer;
   width: 100%;
   background-color: #F2B203;
   color: black;
   border: none;
-  border-radius: 10px;
-  height: 30px;
+  border-radius: 14px;
+  height: 40px;
+  font-weight: 500;
+  margin-top: 5px;
+  transition: .5s;
+}
+
+.get-tix-btn:hover {
+  background-color: #f2b2038a;
 }

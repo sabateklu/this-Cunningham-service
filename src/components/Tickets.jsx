@@ -9,7 +9,12 @@ const Tickets = ({ current }) => (
         <h3 className={css['ticket-header']}>
           {current.attractionTitle} Entrance Tickets
         </h3>
-        <span className={css['ticket-price']}>from ${current.ticketPrice}</span>
+        <div className={css.price}>
+          <div>
+            <span className={css['ticket-price']}>from </span>
+          </div>
+          <strong>${current.ticketPrice}</strong>
+        </div>
       </div>
       <button className={css['get-tix-btn']} type="button">Check Availability</button>
     </div>
