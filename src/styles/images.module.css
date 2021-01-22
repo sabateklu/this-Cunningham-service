@@ -43,6 +43,9 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.26);
   z-index: 200;
 }
+.tooltip h3 {
+  margin: 0;
+}
 
 .images:hover .overlay {
   opacity: 1;
