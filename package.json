@@ -9,7 +9,7 @@
     "test:watch": "jest --verbose --watch --detectOpenHandles",
     "seed": "node db/seed.js",
     "start": "nodemon server",
-    "build": "npx webpack --config webpack.config.js --watch",
+    "build": "npx webpack --config webpack.config.js",
     "build:prod": "npx webpack --config webpack.prod.js",
     "hot": "webpack serve --open",
     "lint": "./node_modules/.bin/eslint . --ignore-path ./.eslintignore"
